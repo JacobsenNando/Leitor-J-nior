@@ -1,1 +1,36 @@
+{% extends base.html'%}
 <h1> Cadastro sdfsdfsdfsd HTML</h1>
+
+{% block 'titulo' %}titulo{%endblock%}
+
+{% block 'conteudo' %}
+
+    <div calss="container">
+        <br>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md">
+                Cadastre-se
+            <hr>
+            <form method = POST>{%csrf_token%}
+                <label>Nome</label>
+                <input calss="form-control" type="text" placeholder="Nome...">
+                <br>
+                <label>Email</label>
+                <input calss="form-control" type="text" placeholder="Email..."> 
+                <br>
+                <label>Senha</label>
+                <input calss="form-control" type="password" placeholder="Senha..."> 
+                <input class="btn btn-info btn-lg" type="submit" value="Enviar">
+            </form>
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+
+
+    </div>
+
+
+
+{%endblock%}
