@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="./style/layout.css" />
+  </head>
+  <body class="all">
+    <div class="alert-content">
+        <div class="style-alert">
+          <p>Crie uma conta</p>
+        </div>
+    </div>
+    <section class="formBody">
+
+      <form id="form" class="form form-login">
+        <p class="heading">Login</p>
+        <div class="form-control">
+          <input class="input" id="email" placeholder="Email" type="text" />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro</small>
+        </div>
+        <div class="form-control">
+          <input class="input" id="senha" placeholder="Senha" type="password" />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro</small>
+        </div>
+        <div class="botoes">
+            <button type="submit" class="btn">Entrar</button>
+            <button type="submit" class="btn2">Insrever-se</button>
+        </div>
+        
+      </form>
+
+    </section>
+    <script src="./js/login.js"></script>
+  </body>
+</html>
