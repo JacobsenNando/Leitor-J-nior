@@ -1,7 +1,5 @@
 const form = document.querySelector("form");
 const nome = document.querySelector("#nome");
-const sobrenome = document.querySelector("#sobrenome");
-const cpf = document.querySelector("#cpf");
 const email = document.querySelector("#email");
 const senha = document.querySelector("#senha");
 const button = document.querySelector(".btn");
@@ -14,8 +12,6 @@ form.addEventListener("submit", (e) => {
 
 function checkInputs() {
   const nameValue = nome.value;
-  const sobrenomeValue = sobrenome.value;
-  const cpfValue = cpf.value;
   const emailValue = email.value;
   const senhaValue = senha.value;
 
@@ -24,20 +20,6 @@ function checkInputs() {
   } else {
     setSuccessFor(nome);
   }
-
-  if (sobrenomeValue === "") {
-    setErrorFor(sobrenome, "Sobrenome não pode estar em branco");
-  } else {
-    setSuccessFor(sobrenome);
-  }
-  if (cpfValue === "") {
-    setErrorFor(cpf, "CPF não pode estar em branco");
-  } else if (cpfValue.length !== 11) {
-    setErrorFor(cpf, "CPF deve ter exatamente 11 caracteres.");
-  } else {
-    setSuccessFor(cpf);
-  }
-
   if (emailValue === "") {
     setErrorFor(email, "O email é obrigatório.");
   } else if (!checkEmail(emailValue)) {

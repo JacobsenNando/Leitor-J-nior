@@ -1,10 +1,7 @@
 const form = document.querySelector("form");
-const nome = document.querySelector("#nome");
-const sobrenome = document.querySelector("#sobrenome");
-const cpf = document.querySelector("#cpf");
 const email = document.querySelector("#email");
 const senha = document.querySelector("#senha");
-const button = document.querySelector(".btn");
+const button = document.querySelector(".btn2");
 const alertContent = document.querySelector(".alert-content");
 
 form.addEventListener("submit", (e) => {
