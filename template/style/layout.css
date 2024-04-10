@@ -138,19 +138,7 @@ body {
   font-size: 0.9rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
 }
-.btn2:hover {
-  gap: 1rem;
-  align-self: center;
-  padding: 0.7em;
-  margin-top: 0.03rem;
-  padding-left: 1em;
-  padding-right: 1em;
-  border-radius: 10px;
-  border: none;
-  color: black;
-  transition: 0.4s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px;
-}
+
 .botoes{
   display: flex;
   justify-content: center;

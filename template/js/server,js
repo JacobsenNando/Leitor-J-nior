@@ -1,0 +1,35 @@
+const express = require('express');
+const mysql = require('mysql');
+
+const app = express();
+
+// Configuração do banco de dados
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'seu_usuario',
+  password: 'sua_senha',
+  database: 'nome_do_banco'
+});
+
+// Conectar ao banco de dados
+db.connect((err) => {
+  if (err) {
+    throw err;
+  }
+  console.log('Conectado ao banco de dados MySQL');
+});
+
+// Rota para obter os resumos dos livros
+app.get('/livros', (req, res) => {
+  let sql = 'SELECT titulo, resumo FROM livros';
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Iniciar servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta ${PORT}`);
+});
