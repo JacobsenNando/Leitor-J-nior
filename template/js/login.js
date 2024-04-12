@@ -10,30 +10,10 @@ form.addEventListener("submit", (e) => {
 });
 
 function checkInputs() {
-  const nameValue = nome.value;
-  const sobrenomeValue = sobrenome.value;
-  const cpfValue = cpf.value;
   const emailValue = email.value;
   const senhaValue = senha.value;
 
-  if (nameValue === "") {
-    setErrorFor(nome, "Nome não pode estar em branco");
-  } else {
-    setSuccessFor(nome);
-  }
-
-  if (sobrenomeValue === "") {
-    setErrorFor(sobrenome, "Sobrenome não pode estar em branco");
-  } else {
-    setSuccessFor(sobrenome);
-  }
-  if (cpfValue === "") {
-    setErrorFor(cpf, "CPF não pode estar em branco");
-  } else if (cpfValue.length !== 11) {
-    setErrorFor(cpf, "CPF deve ter exatamente 11 caracteres.");
-  } else {
-    setSuccessFor(cpf);
-  }
+  
 
   if (emailValue === "") {
     setErrorFor(email, "O email é obrigatório.");
@@ -65,9 +45,7 @@ function checkInputs() {
   }
 }
 function resetForm() {
-  nome.value = "";
-  sobrenome.value = "";
-  cpf.value = "";
+ 
   email.value = "";
   senha.value = "";
 

@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-
     <link rel="stylesheet" href="./style/layout.css" />
   </head>
   <body class="all">
+    <div class="logo">
+      <img src="./images/Leitor.gif" alt="Logo" class="logo" />
+    </div>
     <div class="alert-content">
       <div class="style-alert">
         <p>Crie uma conta</p>
@@ -17,7 +19,7 @@
       <form id="form" class="form form-login">
         <p class="heading">Login</p>
         <div class="form-control">
-          <input class="input" id="email" placeholder="Email" type="text" />
+          <input class="input" id="email" placeholder="Email" type="email" />
           <i class="fas fa-exclamation-circle"></i>
           <i class="fas fa-check-circle"></i>
           <small>Mensagem de erro</small>
@@ -28,9 +30,11 @@
           <i class="fas fa-check-circle"></i>
           <small>Mensagem de erro</small>
         </div>
-        <div class="botoes">
-          <button type="submit" class="btn">Entrar</button>
-          <button type="submit" class="btn">Insrever-se</button>
+
+        <button type="submit" class="btn">Entrar</button>
+
+        <div class="cad">
+          <a href="/cad_user.html" target="_blank">Cadastre-se</a>
         </div>
       </form>
     </section>

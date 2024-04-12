@@ -166,19 +166,11 @@ body {
 
 
 }
-.logo {
+ .logo {
   position: absolute;
   top: 10px;
   left: 40px;
   width: 200px; /* Ajuste o tamanho do logotipo conforme necessário */
   height: auto; /* Mantém a proporção original */
   margin: 20px auto; /* Define margens para centralizar a imagem horizontalmente */
- }
-
-.logo {
-  position: absolute;
-  top: 10px;
-  left: 40px;
-  width: 100px; /* Ajuste o tamanho do logotipo conforme necessário */
-  height: 50px; /* Mantém a proporção original */
  }

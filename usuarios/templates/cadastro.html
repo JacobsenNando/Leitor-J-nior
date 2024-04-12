@@ -1,1 +1,50 @@
-<h1> Cadastro sdfsdfsdfsd HTML</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crie sua conta</title>
+
+    <link rel="stylesheet" href="./style/layout.css" />
+  </head>
+  <body class="all">
+    <div class="logo">
+        <img src="./images/Leitor.gif" alt="Logo" class="logo" />
+      </div>
+    <div class="alert-content">
+      <div class="style-alert">
+        <p>Conta criada com sucesso!</p>
+      </div>
+    </div>
+    <section class="formBody">
+      <form action="" id="form" class="form">
+        <p class="heading">Crie sua Conta</p>
+        <div class="form-control">
+          <input class="input" id="nome" placeholder="Nome" type="text" />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro</small>
+        </div>
+        <div class="form-control">
+          <input class="input" id="email" placeholder="Email" type="text" />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro</small>
+        </div>
+        <div class="form-control">
+          <input class="input" id="senha" placeholder="Senha" type="password" />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro</small>
+        </div>
+        <button type="submit" class="btn">Increva-se</button>
+
+        <div class="cad">
+            <a href="/cad_user.html" target="_blank">Login</a>
+          </div>
+      </form>
+    </section>
+
+    <script src="./js/cad_user.js"></script>
+  </body>
+</html>
