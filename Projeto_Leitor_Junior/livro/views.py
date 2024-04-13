@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
 
 
-def  homr(request):
+def  home(request):
     if request.get('usuario'):
         return HttpResponse('Homepage')
     else:

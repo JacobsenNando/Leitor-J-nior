@@ -1,33 +1,39 @@
-{% extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
 
-{% block 'titulo' %}Login{%endblock%}
-
-{% block 'conteudo' %}
-
-    <div calss="container">
-        <br>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md">
-            <h1>Cadastre-se</h1>
-            <hr>
-            <form method = POST action = "{% url 'valida_login' %}">{%csrf_token%}
-                <label>Email</label>
-                <input name = "email" class="form-control" type="text" placeholder="Email..."> 
-                <br>
-                <label>Senha</label>
-                <input name = "senha"class="form-control" type="password" placeholder="Senha..."> 
-                <br>
-                <input class="btn btn-info btn-lg" type="submit" value="Enviar">
-            </form>
-            </div>
-            <div class="col-md-3"></div>
-
-        </div>
-
-
+    <link rel="stylesheet" href="./style/layout.css" />
+  </head>
+  <body class="all">
+    <div class="alert-content">
+      <div class="style-alert">
+        <p>Crie uma conta</p>
+      </div>
     </div>
-
-
-
-{%endblock%}
+    <section class="formBody">
+      <form id="form" class="form form-login">
+        <p class="heading">Login</p>
+        <div class="form-control">
+          <input class="input" id="email" placeholder="Email" type="text" />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro</small>
+        </div>
+        <div class="form-control">
+          <input class="input" id="senha" placeholder="Senha" type="password" />
+          <i class="fas fa-exclamation-circle"></i>
+          <i class="fas fa-check-circle"></i>
+          <small>Mensagem de erro</small>
+        </div>
+        <div class="botoes">
+          <button type="submit" class="btn">Entrar</button>
+          <button type="submit" class="btn">Insrever-se</button>
+        </div>
+      </form>
+    </section>
+    <script src="./js/login.js"></script>
+  </body>
+</html>
