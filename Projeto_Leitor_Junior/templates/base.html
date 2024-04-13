@@ -8,10 +8,13 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
+
     <link rel="stylesheet" href="./style/layout.css" />
     <link rel="stylesheet" href="./style/reset.css" />
 
-    <title>Hello, world!</title>
+    {% block 'head' %}{%endblock%}
+
+    <title>{% block 'titulo' %}{%endblock%}</title>
   </head>
   <body class="teste"></body>
 </html>
