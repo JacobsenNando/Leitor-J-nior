@@ -16,7 +16,8 @@
       </div>
     </div>
     <section class="formBody">
-      <form id="form" class="form form-login">
+      <form action="{%url 'login'%}"  method="post" id="form" class="form form-login">
+        <!-- {% csrf_token %} -->
         <p class="heading">Bem Vindo de Volta!</p>
         <div class="form-control">
           <input class="input" id="email" placeholder="Email" type="email" />
