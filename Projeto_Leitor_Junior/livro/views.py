@@ -2,5 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def  cadastrar(request):
-    return HttpResponse('Hello World')
+def  homr(request):
+    if request.get('usuario'):
+        return HttpResponse('Homepage')
+    else:
+        return redirect('/auth/login/?status=2')
