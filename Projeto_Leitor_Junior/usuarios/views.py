@@ -19,7 +19,7 @@ from hashlib import sha256
    """ 
 
 def login(request):
-    return HttpResponse('login')
+    return render(request, 'login.html')
 
 def cadastro(request):
     return render(request, 'cadastro.html')
@@ -46,10 +46,42 @@ def valida_cadastro(request):
         return redirect('/auth/cadastro/?status=3')
     
     try:
-        #senha = sha256(senha.encode)
+        senha = sha256(senha.encode()).hexdigest()
         usuario = Usuario(nome = nome, 
                           senha = senha, 
-                        email = email)
+                          email = email)
+        usuario.save()
+
+        return redirect('/auth/login/?status=0')
+    except:
+        return redirect('/auth/cadastro/?status=4')
+    
+#--------------------Login--------------------#
+
+def valida_login(request):
+    email = request.POST.get('email')
+    senha = request.POST.get('senha')
+
+    senha = sha256(senha.encode()).hexdigest()
+
+    usuario = Usuario.objects.filter(email = email).filter(senha = senha)
+
+    #return HttpResponse(f"{email} {senha}")
+    
+    if len(usuario) == 0:
+        return redirect('/auth/login/?status=1')
+
+    if len(senha) < 8:
+        return redirect('/auth/login/?status=2')
+
+    if len(usuario) > 0:
+        return redirect('/auth/login/?status=3')
+    
+    try:
+        senha = sha256(senha.encode()).hexdigest()
+        usuario = Usuario(nome = nome, 
+                          senha = senha, 
+                          email = email)
         usuario.save()
 
         return redirect('/auth/login/?status=0')
