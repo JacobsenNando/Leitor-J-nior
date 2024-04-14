@@ -1,1 +1,5 @@
-# PIA3
+
+
+~ bash source venv/bin/activate
+
+npm install express mysq

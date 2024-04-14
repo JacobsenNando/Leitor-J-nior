@@ -6,19 +6,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #074c91;
+  background-color:#5271FF;
 }
 .formBody {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 14rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.563);
+  background-color: rgba(255, 255, 255);
   width: 24rem;
   height: 26rem;
   padding: 1rem;
@@ -138,19 +138,7 @@ body {
   font-size: 0.9rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
 }
-.btn2:hover {
-  gap: 1rem;
-  align-self: center;
-  padding: 0.7em;
-  margin-top: 0.03rem;
-  padding-left: 1em;
-  padding-right: 1em;
-  border-radius: 10px;
-  border: none;
-  color: black;
-  transition: 0.4s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px;
-}
+
 .botoes{
   display: flex;
   justify-content: center;
@@ -168,3 +156,21 @@ body {
   transition: 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
 }
+
+.cad{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  font-size: small;
+
+
+}
+ .logo {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  width: 200px; /* Ajuste o tamanho do logotipo conforme necessário */
+  height: auto; /* Mantém a proporção original */
+  margin: 20px auto; /* Define margens para centralizar a imagem horizontalmente */
+ }

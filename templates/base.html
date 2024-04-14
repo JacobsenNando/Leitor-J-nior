@@ -1,20 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busca de Livros</title>
+  <!-- Adicione o link para o CSS do Bootstrap (opcional) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Estilos personalizados */
+    .container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body class="all">
+  <div class="logo">
+    <img src="./images/Leitor.gif" alt="Logo" class="logo" />
+  </div>
+  <div class="container">
+    <h1>Busca de Livros</h1>
+    <!-- Campo de busca -->
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Digite o título do livro" id="campo-busca">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" id="btn-buscar">Buscar</button>
+      </div>
+    </div>
 
+    <!-- Lista de resumos de livros (puxada do servidor) -->
+    <div id="lista-livros">
+      <h2>Resultados da busca:</h2>
+      <ul class="list-group" id="lista-resumos">
+        <!-- Os resumos dos livros serão preenchidos aqui -->
+      </ul>
+    </div>
+  </div>
 
-    <link rel="stylesheet" href="./style/layout.css" />
-    <link rel="stylesheet" href="./style/reset.css" />
+  <!-- Adicione o link para o jQuery (necessário para o Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <!-- Adicione o link para o JavaScript do Bootstrap (necessário para alguns componentes do Bootstrap) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#btn-buscar').click(function(){
+        var termoBusca = $('#campo-busca').val().toLowerCase();
+        $('#lista-resumos li').each(function(){
+          var textoLivro = $(this).text().toLowerCase();
+          if(textoLivro.indexOf(termoBusca) === -1){
+            $(this).hide();
+          } else {
+            $(this).show();
+          }
+        });
+      });
 
-    {% block 'head' %}{%endblock%}
+      // Função para buscar resumos de livros do servidor
+      function buscarLivros() {
+        $.get('/livros', function(data) {
+          $('#lista-resumos').empty(); // Limpa a lista antes de adicionar novos itens
+          data.forEach(function(livro) {
+            $('#lista-resumos').append('<li class="list-group-item">' + livro.titulo + ': ' + livro.resumo + '</li>');
+          });
+        });
+      }
 
-    <title>{% block 'titulo' %}{%endblock%}</title>
-  </head>
-  <body class="teste"></body>
+      // Chama a função para buscar os resumos de livros ao carregar a página
+      buscarLivros();
+    });
+  </script>
+</body>
 </html>
