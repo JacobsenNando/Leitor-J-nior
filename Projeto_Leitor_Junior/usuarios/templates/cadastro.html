@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crie sua conta</title>
 
-    <link rel="stylesheet" href=".style/layout.css" />
+
+    
+
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style\layout.css' %}"/>
   </head>
   <body class="all">
     <div class="alert-content">
@@ -37,6 +43,6 @@
         <button type="submit" class="btn">Increva-se</button>
       </form>
     </section>
-    <script src="./js/cad_user.js"></script>
+    <script src="{%static '/js/cad_user.js' %}"></script>
   </body>
 </html>

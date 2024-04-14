@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
 
-    <link rel="stylesheet" href="./style/layout.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/layout.css'%}" />
   </head>
   <body class="all">
     <div class="alert-content">
@@ -34,6 +35,6 @@
         </div>
       </form>
     </section>
-    <script src="./js/login.js"></script>
+    <script src="{% static 'js/login.js' %}"></script>
   </body>
 </html>
