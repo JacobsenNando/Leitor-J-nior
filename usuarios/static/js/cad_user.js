@@ -6,11 +6,12 @@ const button = document.querySelector(".btn");
 const alertContent = document.querySelector(".alert-content");
 
 form.addEventListener("submit", (e) => {
-  if (!checkInputs()) {
-    e.preventDefault();
+  if (!checkInputs()) {//Impede envio do formulario caso algum campo esteja incorreto (checkinputs = false)
+    e.preventDefault();//Impede envio do formulario
   }
 });
 
+//Verifica campos do formulário
 function checkInputs() {
   const nameValue = nome.value;
   const emailValue = email.value;
@@ -43,16 +44,19 @@ function checkInputs() {
     return formControl.className === "form-control success";
   });
 
+  //Confirma que o formulário está totalmente valido e pode ser enviado
   if (formIsValid) {
     console.log("O formulário está 100% válido!");
 
     //resetForm();
     showSuccessMessage();
-    setTimeout(() => {
-      form.submit()
+    setTimeout(() => {//Atrasa 2 segundos o envio do formulário
+      form.submit() //Envia o formulário
     }, 2000);   
   }
 }
+
+//Limpa os campos do formulário
 function resetForm() {
   nome.value = "";
   sobrenome.value = "";
@@ -64,6 +68,7 @@ function resetForm() {
     formControl.classList.remove("success");
   });
 }
+
 
 function showSuccessMessage() {
   alertContent.style.display = "block";
@@ -88,6 +93,7 @@ function setSuccessFor(input) {
   formControl.className = "form-control success";
 }
 
+//Realiza a validação do formato do email
 function checkEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     email
