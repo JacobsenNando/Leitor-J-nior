@@ -1,23 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    {% block 'head' %}{% endblock %}
-    <title>{% block 'titulo' %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="./static/style/layout.css" />
+    <link rel="stylesheet" type="text/css" href="./static/style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./static/images/Leitor.gif" />
   </head>
+  <link rel="stylesheet" type="text/css" href="./static/style/reset.css" />
+
   <body>
-    {% block 'conteudo' %}{% endblock %}
+   <header class="header">
+      <nav>
+        <div class="logo">
+          <!-- <img src="{% static 'images/leitor.gif' %}" alt="Logo" class="logo" /> -->
+          <img  src="./static/images/Leitor.gif" alt="Logo" class="logo" />
+        </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+        <div class="link"><a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+      </nav>
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    </header> 
+  
+    <form action="   " method="get" class="form">
+      <input type="text" id="search" name="search" class="input" placeholder="Persquisa" >
+    <button class="button" type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+      </svg>
+    </button>
+
+  <h1>Filtro</h1>
+  <select name="filtro" id="filtro" class="">
+    <option  value="1">Título</option>
+    <option value="2">Autor</option>
+    <option value="3">Gênero</option>
+</select>
+  </form>
 
   </body>
 </html>
+
