@@ -43,7 +43,9 @@ function checkInputs() {
 
     //resetForm();
     showSuccessMessage();
-    return checkInputs = true
+    setTimeout(() => {
+      form.submit()
+    }, 2000);
   }
 }
 function resetForm() {
