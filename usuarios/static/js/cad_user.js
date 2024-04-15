@@ -6,8 +6,9 @@ const button = document.querySelector(".btn");
 const alertContent = document.querySelector(".alert-content");
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkInputs();
+  if (!checkInputs()) {
+    e.preventDefault();
+  }
 });
 
 function checkInputs() {
@@ -45,8 +46,9 @@ function checkInputs() {
   if (formIsValid) {
     console.log("O formulário está 100% válido!");
 
-    resetForm();
+    //resetForm();
     showSuccessMessage();
+    return checkInputs = true
   }
 }
 function resetForm() {
