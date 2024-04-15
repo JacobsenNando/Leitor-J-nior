@@ -5,8 +5,9 @@ const button = document.querySelector(".btn2");
 const alertContent = document.querySelector(".alert-content");
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkInputs();
+  if (!checkInputs()) {
+    e.preventDefault();
+  }
 });
 
 function checkInputs() {
@@ -42,6 +43,10 @@ function checkInputs() {
 
     resetForm();
     showSuccessMessage();
+    setTimeout(() => {
+      // Envie o formulário após 2 segundos
+      form.submit();
+  }, 20000);
   }
 }
 function resetForm() {
