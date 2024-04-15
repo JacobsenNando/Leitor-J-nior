@@ -41,9 +41,9 @@ function checkInputs() {
   if (formIsValid) {
     console.log("O formulário está 100% válido!");
 
-    resetForm();
+    //resetForm();
     showSuccessMessage();
-    form.submit();
+    return checkInputs = true
   }
 }
 function resetForm() {
