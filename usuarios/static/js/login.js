@@ -43,10 +43,7 @@ function checkInputs() {
 
     resetForm();
     showSuccessMessage();
-    setTimeout(() => {
-      // Envie o formulário após 2 segundos
-      form.submit();
-  }, 20000);
+    form.submit();
   }
 }
 function resetForm() {
