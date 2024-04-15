@@ -1,7 +1,5 @@
-Ótimo! Podemos adicionar essa informação ao README.md para fornecer uma visão geral do projeto. Aqui está a versão atualizada:
 
-```markdown
-# Leitor Júnior - Portal de Resumos e Notas para Livros
+## Leitor Júnior - Portal de Resumos e Notas para Livros
 
 Bem-vindo ao Leitor Júnior, um portal desenvolvido para inserir resumos e notas para livros, projetado para ser utilizado em escolas.
 
