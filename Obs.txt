@@ -2,13 +2,19 @@ Requirements.txt não está funcional, seguir instruções para rodar a vm
 
 
 - Certificar de que o MysqlWorkbench versao 8.0.33 está instalado link para download direto: https://downloads.mysql.com/archives/get/p/25/file/mysql-installer-community-8.0.33.0.msi
+
 -Instalar versão developer default
     Na instalação, além do usuário root, criar um usuário 'leitor_junior' com senha 'admin'.
+
 - Depois de instalado, abrir MySql 8.0 Command Line Client (procura o menu inical no windows) Entrar com a senha de root e inserir o seguinte comando:
     CREATE DATABASE leitor_junior CHARACTER SET utf8;
+
 - Criar uma venv (caso não tenha) e rodar os comandos abaixo:
+
 - pip install Django    (framework Django)
+
 - pip install mysqlclient (conector client mysql)
+
 - python manage.py migrate (cria as tabelas no banco de dados mysql)
 
 Configurações OK
