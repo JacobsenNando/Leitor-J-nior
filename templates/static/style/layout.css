@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color:#5271FF;
+  }
+
+
+  /*Header*/
+  .header{
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+  }
+  .logo {
+    justify-content: left;
+    width: 100px;
+    height: auto; 
+   
+   }
+.link{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+/*Formulário*/
+.form{
+  position:absolute;
+  top: 80px;
+  background-color: rgba(255, 255, 255);
+  width: 24rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
+
+}
+  .input {
+    border-radius: 0.5rem;
+    border: 1px solid rgb(175, 175, 175);
+    outline: none;
+    padding: 0.7em;
+    transition: 0.4s ease-in-out;
+    width: 22rem;
+  }
+  
+  .input:hover {
+    box-shadow: 4px 4px 0px #727275, -3px -3px 10px #ffffff;
+  }
+  
+  .input:focus {
+    background: #ffffff;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+
+  
+.button {
+    position: absolute;
+    top: -5px;
+    background: none;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 0.5rem;
+   cursor: pointer;
+  }
+  
+.button:hover {
+    bbox-shadow: 4px 4px 0px #727275, -3px -3px 10px #ffffff;
+  }
+  
+.button svg {
+    color: #fff;
+  }
+
+.filtro{
+  position: absolute;
+
+  width: 5rem;
+  padding: 2px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 6px;
+}

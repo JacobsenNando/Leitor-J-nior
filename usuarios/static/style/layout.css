@@ -68,7 +68,7 @@ body {
 
 .form .btn:hover {
   box-shadow: 6px 6px 0px #969696, -3px -3px 10px #ffffff;
-  transform: translateX(-0.5em) translateY(-0.5em);
+  transform: translateX(-0.3em) translateY(-0.3em);
 }
 
 .form .btn:active {
@@ -185,7 +185,7 @@ body {
 
 
 
- 
+ /*botao login*/
 .Btn {
   display: flex;
   align-items: center;
@@ -201,7 +201,6 @@ body {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
   background-color: rgb(33, 177, 33);
 }
-
 /* plus sign */
 .sign {
   width: 100%;
@@ -210,11 +209,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 .sign svg {
   width: 17px;
 }
-
 .sign svg path {
   fill: white;
 }
