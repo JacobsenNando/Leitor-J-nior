@@ -82,13 +82,24 @@ WSGI_APPLICATION = "leitor_junior.wsgi.application"
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }"""
-
+"""
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "OPTIONS": {
             "read_default_file": os.path.join(BASE_DIR, 'MySqlConnection.cnf'),
         },
+    }
+}
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'leitor_junior',
+        'USER': 'leitor_junior',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
