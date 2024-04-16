@@ -11,36 +11,55 @@
   <link rel="stylesheet" type="text/css" href="./static/style/reset.css" />
 
   <body>
-   <header class="header">
+    <header class="header">
       <nav>
         <div class="logo">
           <!-- <img src="{% static 'images/leitor.gif' %}" alt="Logo" class="logo" /> -->
-          <img  src="./static/images/Leitor.gif" alt="Logo" class="logo" />
+          <img src="./static/images/Leitor.gif" alt="Logo" class="logo" />
         </div>
 
-        <div class="link"><a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </div>
+        <div class="link">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
       </nav>
+    </header>
 
-    </header> 
-  
-    <form action="   " method="get" class="form">
-      <input type="text" id="search" name="search" class="input" placeholder="Persquisa" >
-    <button class="button" type="submit">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-      </svg>
-    </button>
+    <form action="    " method="post" class="form">
+      <input
+        type="text"
+        id="search"
+        name="search"
+        class="input"
+        placeholder="Persquisa"
+      />
 
-  <h1>Filtro</h1>
-  <select name="filtro" id="filtro" class="">
-    <option  value="1">Título</option>
-    <option value="2">Autor</option>
-    <option value="3">Gênero</option>
-</select>
-  </form>
+      <button class="button" type="submit">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-search"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+      </button>
 
+      <h1>Filtro</h1>
+
+      <select name="filtro" id="filtro" class="  ">
+        <option value="1" name="1">Título</option>
+        <option value="2" name="2">Autor</option>
+        <option value="3" name="3">Gênero</option>
+      </select>
+    </form>
   </body>
 </html>
-

@@ -56,7 +56,7 @@ def valida_cadastro(request):
     except:
         return redirect('/auth/cadastro/?status=4')
     
-#--------------------Login-----------------------------
+#--------------------Login-----------------------------#
 
 """
 #################--Status Login--####################
@@ -89,8 +89,8 @@ def valida_login(request):
         request.session['usuario'] = usuario[0].id
         return redirect('/livro/home/') #?id_usuario={request.session["usuario"]}
 
-#---------------------Logout--------------------------
-#Limpa session para fazer logout do usuário do sistema
+#---------------------Logout--------------------------#
+#Limpa session para fazer logout do usuário do sistema#
 def logout(request):
     request.session.flush()
     return redirect('/auth/login/')
