@@ -1,0 +1,4 @@
+Requirements.txt não está funcional
+Rodar na venv os seguintes comandos (quando criada uma venv nova)
+pip install Django    (framework Django)
+pip install mysqlclient (conector client mysql)
