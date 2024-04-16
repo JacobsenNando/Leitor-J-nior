@@ -73,19 +73,21 @@ def valida_cadastro(request):
 def valida_login(request):
     email = request.POST.get('email')
     senha = request.POST.get('senha')
+    #return HttpResponse(f'{email} {senha}')
 
     senha = sha256(senha.encode()).hexdigest()
 
     #Busca usuário que coincide com email e senha
     usuario = Usuario.objects.filter(email = email).filter(senha = senha)
+
+    #return HttpResponse(f'{usuario[0].email} {usuario[0].senha} {usuario[0].id}')
     
     #Verifica se há usuario conforme email e senha passado, se sim, cria uma session com o id do usuario
     if len(usuario) == 0:
         return redirect('/auth/login/?status=1')
-    elif len(usuario) > 1:
+    elif len(usuario) > 0:
         request.session['usuario'] = usuario[0].id
-        return redirect(f'/livro/home/?id_usuario={request.session["usuario"]}')
-
+        return redirect('/livro/home/') #?id_usuario={request.session["usuario"]}
 
 #---------------------Logout--------------------------
 #Limpa session para fazer logout do usuário do sistema
