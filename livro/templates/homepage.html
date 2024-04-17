@@ -72,5 +72,14 @@
         <option value="3" name="3">Gênero</option>
       </select>
     </form>
+
+    <tbody>
+      {%for livro in livros%}
+      <tr>
+        <td>{{livro.titulo}}</td>
+        <td>{{livro.autor}}</td>
+        <td>{{livro.genero}}</td>
+      </tr>
+    </tbody>
   </body>
 </html>
