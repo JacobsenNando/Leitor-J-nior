@@ -30,7 +30,7 @@
       </nav>
     </header>
 
-    <form action="    " method="post" class="form">
+    <form action="{% url 'search' %}" method="POST" class="form">{%csrf_token%}
       <input
         type="text"
         id="search"
