@@ -75,7 +75,6 @@
       </select>
     </form>
 
-    {% comment %}
     <tbody>
       {%for livro in livros%}
       <tr>
@@ -83,7 +82,7 @@
         <td>{{livro.autor}}</td>
         <td>{{livro.genero}}</td>
       </tr>
+      {%endfor%}
     </tbody>
-    {% endcomment %}
   </body>
 </html>
