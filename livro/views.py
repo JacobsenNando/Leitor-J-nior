@@ -13,7 +13,7 @@ def  home(request):
 def search(request):
     if request.session.get("usuario"):
         busca = request.POST.get('search')
-        filtro = int(request.POST.get('filtro'))
+        filtro = request.POST.get('filtro')
         """#return HttpResponse(f'{filtro}')
         if filtro == 1:
             return HttpResponse('1')
@@ -25,5 +25,8 @@ def search(request):
             return HttpResponse('fail')"""
         #usar **kwargss
 
-        resultado = Livros.objects.filter(filtro = busca)
+        kw = {filtro:busca}
+
+        resultado = Livros.objects.filter(**kw)
+        return HttpResponse(f'{resultado[0].titulo}')
         return render(request, 'homepage.html')
