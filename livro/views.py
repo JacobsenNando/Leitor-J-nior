@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import redirect
 from .models import Livros
+import re
 
 def  home(request):
     if request.session.get('usuario'):
@@ -15,8 +16,13 @@ def search(request):
     if request.session.get("usuario"):
         busca = request.POST.get('search')
         filtro = request.POST.get('filtro')
+        padrao = r"^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$"
+        if re.match(padrao, busca):
+            return HttpResponse('ok')
+        else:
+            return HttpResponse('falha')
         
-        if (filtro != 'titulo') and (filtro !='autor') and (filtro !='genero') :#Verifica se não foi adicionado um valor arbitrario pelo usuario em filtros
+        if (filtro != 'titulo') and (filtro !='autor') and (filtro !='genero') :#Verifica se não foi adicionado um valor arbitrário pelo usuario em filtros
             return HttpResponseForbidden() #Se o valor for difrente dos permitidos retorna 403
         
                                                 #usando **kwargss
