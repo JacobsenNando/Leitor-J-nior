@@ -39,7 +39,8 @@
       </nav>
     </header>
 
-    <form action="{% url 'search' %}" method="POST" class="form">{%csrf_token%}
+    <form action="{% url 'search' %}" method="POST" class="form">
+      {%csrf_token%}
       <div class="search">
         <input
           type="text"
@@ -75,14 +76,18 @@
       </select>
     </form>
 
-    <tbody>
-      {%for livro in livros%}
-      <tr>
-        <td>{{livro.titulo}}</td>
-        <td>{{livro.autor}}</td>
-        <td>{{livro.genero}}</td>
-      </tr>
-      {%endfor%}
-    </tbody>
+    <div class="table">
+      <tbody>
+        {%for livro in livros%}
+        <tr>
+          <a href="{%url 'ver_livro' livro.id%}">
+            <br />
+            <td>{{livro.titulo}} -- {{livro.autor}} -- {{livro.genero}}</td>
+            <br />
+          </a>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </div>
   </body>
 </html>
