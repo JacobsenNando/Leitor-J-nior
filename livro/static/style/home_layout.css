@@ -1,52 +1,11 @@
-body {
+.container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-color: #5271ff;
-}
-
-/*Header*/
-.header {
   width: 100%;
-  display: flex;
-  padding: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  height: 40px;
+  margin-top: 1rem;
 }
-
-.logo {
-  justify-content: left;
-  width: 100px;
-  left: 15px;
-  top: 5px;
-  position: absolute;
-}
-
-.link {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  gap: 10px;
-}
-
-a:link {
-  text-decoration: none;
-  color: #000000;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: 0.4s ease-in-out;
-}
-
-/*Formulário*/
 .form {
-  position: absolute;
-  top: 80px;
   background-color: rgba(255, 255, 255);
   width: 24rem;
   padding: 1rem;
@@ -119,12 +78,26 @@ a:link {
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.table{
+.table {
+  border-collapse: collapse;
   border-radius: 0.5rem;
   border: 1px solid rgb(175, 175, 175);
   outline: none;
   padding: 0.7em;
   background-color: white;
-  margin-top: 10rem;
+  margin-top: 2rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
+}
+
+.table th,
+.table td {
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.table th {
+  background-color: #f2f2f2;
 }
