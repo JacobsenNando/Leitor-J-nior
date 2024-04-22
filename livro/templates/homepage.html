@@ -102,6 +102,7 @@
         <option value="genero" name="genero">Gênero</option>
       </select>
     </form>
+
     <div class="table">
       <table>
           <thead>
@@ -121,12 +122,21 @@
               {% endfor %}
           </tbody>
       </table>
-      <div id="pagination">
-          {% for page_num in pages %}
-              <a href="?page={{ page_num }}">{{ page_num }}</a>
+      <div id="pagination" class="pagination">
+          {% if livros.has_previous %}
+              <a href="?page={{ livros.previous_page_number }}">Anterior</a>
+          {% endif %}
+          {% for num in livros.paginator.page_range %}
+              <a href="?page={{ num }}">{{ num }}</a>
           {% endfor %}
+            {% if livros.has_next %}
+              <a href="?page={{ livros.next_page_number }}">Próxima</a>
+          {% endif %}
+
       </div>
+
   </div>
-  </div>
+</div>
+    
   </body>
 </html>
