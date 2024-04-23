@@ -45,7 +45,7 @@
         </nav>
   
         <div class="but">
-          <form action="{% url 'logout' %}" method="POST"> {% csrf_token %}
+          <form action="{% url 'logout' %}" method="GET"> {% csrf_token %}
               <button class="logout" type="submit">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
