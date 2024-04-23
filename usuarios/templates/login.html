@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/images/leitor.gif" />
+    <link rel="stylesheet" href="../static/style/layout.css" />
+    <link rel="stylesheet" href="../static/style/reset.css" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'style\layout.css' %}" />
   </head>
@@ -16,31 +19,64 @@
       </div>
     </div>
     <section class="formBody">
-      <form method = POST action = "{% url 'valida_login' %}" id="form" class="form form-login">{% csrf_token %}
+      <form
+        method="POST"
+        action="{% url 'valida_login' %}"
+        id="form"
+        class="form form-login"
+      >
+        {% csrf_token %}
         <!-- {% csrf_token %} -->
         <p class="heading">Bem Vindo de Volta!</p>
         <div class="form-control">
-          <input class="input" id="email" name="email" placeholder="Email" type="email" />
+          <input
+            class="input"
+            id="email"
+            name="email"
+            placeholder="Email"
+            type="email"
+          />
           <i class="fas fa-exclamation-circle"></i>
           <i class="fas fa-check-circle"></i>
           <small>Mensagem de erro</small>
         </div>
         <div class="form-control">
-          <input class="input" id="senha" name="senha" placeholder="Senha" type="password" />
+          <input
+            class="input"
+            id="senha"
+            name="senha"
+            placeholder="Senha"
+            type="password"
+          />
           <i class="fas fa-exclamation-circle"></i>
           <i class="fas fa-check-circle"></i>
           <small>Mensagem de erro</small>
         </div>
         <div class="cad">
-          <button class="Btn" type = "submit">
-  
-            <div class="sign"><svg viewBox="0 0 512 512"><path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path></svg></div>
-          
+          <button class="Btn" type="submit">
+            <div class="sign">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-log-in"
+              >
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" x2="3" y1="12" y2="12" />
+              </svg>
+            </div>
+
             <div class="text">Entrar</div>
           </button>
-      </div>
-        
-  
+        </div>
+
         <div class="cad">
           <a href="{%url 'cadastro' %}" target="_blank">Cadastre-se</a>
         </div>
