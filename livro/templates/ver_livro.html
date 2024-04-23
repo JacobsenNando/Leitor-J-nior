@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/reset.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/rating.css' %}"
+    />
+  </head>
+  <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/page.css' %}"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img src="{% static 'images/leitor.gif' %}" alt="Logo" class="logo" />
+      </div>
+      {% comment %}
+      <div class="logo">
+        <img src="../static/images/leitor.gif" alt="Logo" class="logo" />
+      </div>
+      {% endcomment %}
+
+      <nav class="links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+
+      <div class="but">
+        <button class="logout" type="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-log-out"
+          >
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" x2="9" y1="12" y2="12" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="title">
+      <h1>{{livro}}</h1>
+      <div class="container">
+        <div class="form">
+          <h2>Registre sua resenha!</h2>
+          <br />
+          <div class="rating">
+            <input value="5" name="rate" id="star5" type="radio" />
+            <label title="5" for="star5"></label>
+            <input value="4" name="rate" id="star4" type="radio" />
+            <label title="4" for="star4"></label>
+            <input value="3" name="rate" id="star3" type="radio" />
+            <label title="3" for="star3"></label>
+            <input value="2" name="rate" id="star2" type="radio" />
+            <label title="2" for="star2"></label>
+            <input value="1" name="rate" id="star1" type="radio" />
+            <label title="1" for="star1"></label>
+          </div>
+          <form action="" method="POST" class="formresenha">
+            {% csrf_token %}
+
+            <textarea
+              class="opinion"
+              placeholder="Dê sua opinião sobre o livro!!!"
+            >
+            </textarea>
+            <button class="button" type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-send-horizontal"
+              >
+                <path d="m3 3 3 9-3 9 19-9Z" />
+                <path d="M6 12h16" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="table">
+          <h2>Resenhas dos usuário</h2>
+          <table class="">
+            <tr>
+              <th>Resenha</th>
+              <th>Nota</th>
+            </tr>
+            {% for resenha in resenhas %}
+            <tr>
+              <td>{{resenha.resenha}}</td>
+              <td>{{resenha.nota}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

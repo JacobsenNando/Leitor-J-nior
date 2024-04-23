@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<html lang="pt-BR">
   <head>
-    <!-- {% load static %} -->
+    {% load static %}
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,32 +13,62 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'style/layout.css' %}"
+      href="{% static 'style/home_layout.css' %}"
     />
     <link
       rel="stylesheet"
       type="text/css"
       href="{% static 'style/reset.css' %}"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/page.css' %}"
+    />
   </head>
 
   <body>
-    <header class="header">
-      <!-- <div class="logo">
+    <body>
+      <header class="header">
+        <div class="logo">
           <img src="{% static 'images/leitor.gif' %}" alt="Logo" class="logo" />
-        </div> -->
-      <div class="logo">
-        <img src="../static/images/leitor.gif" alt="Logo" class="logo" />
-      </div>
-
-      <nav class="link">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
-    </header>
-
-    <form action="    " method="post" class="form">
+        </div>
+        {% comment %}
+        <div class="logo">
+          <img src="../static/images/leitor.gif" alt="Logo" class="logo" />
+        </div>
+        {% endcomment %}
+  
+        <nav class="links">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+  
+        <div class="but">
+          <button class="logout" type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-log-out"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" x2="9" y1="12" y2="12" />
+            </svg>
+          </button>
+        </div>
+      </header>
+<div class="container">
+    <form action="{% url 'search' %}" method="POST" class="form">
+      {%csrf_token%}
       <div class="search">
         <input
           type="text"
@@ -67,19 +98,36 @@
       </div>
 
       <select class="filtro" name="filtro" id="filtro">
-        <option value="1" name="1">Título</option>
-        <option value="2" name="2">Autor</option>
-        <option value="3" name="3">Gênero</option>
+        <option value="titulo" name="titulo">Título</option>
+        <option value="autor" name="autor">Autor</option>
+        <option value="genero" name="genero">Gênero</option>
       </select>
     </form>
-
-    <tbody>
-      {%for livro in livros%}
-      <tr>
-        <td>{{livro.titulo}}</td>
-        <td>{{livro.autor}}</td>
-        <td>{{livro.genero}}</td>
-      </tr>
-    </tbody>
+    <div class="table">
+      <table>
+          <thead>
+              <tr>
+                  <th>Título</th>
+                  <th>Autor</th>
+                  <th>Gênero</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for livro in livros %}
+              <tr>
+                  <td><a href="/ver_livro/{{ livro.id }}">{{ livro.titulo }}</a></td>
+                  <td>{{ livro.autor }}</td>
+                  <td>{{ livro.genero }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      <div id="pagination">
+          {% for page_num in pages %}
+              <a href="?page={{ page_num }}">{{ page_num }}</a>
+          {% endfor %}
+      </div>
+  </div>
+  </div>
   </body>
 </html>

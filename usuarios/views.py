@@ -5,9 +5,13 @@ from django.shortcuts import redirect
 from hashlib import sha256
 
 def login(request):
+    if request.session.get("usuario"): #Verifica se o usuário já está logado, se sim, redireciona para a home
+        return redirect('/livro/home/')
     return render(request, 'login.html')
 
 def cadastro(request):
+    if request.session.get("usuario"): #Verifica se o usuário já está logado, se sim, redireciona para a home
+        return redirect('/livro/home/')
     return render(request, 'cadastro.html')
 
 
@@ -75,10 +79,10 @@ def valida_login(request):
     senha = request.POST.get('senha')
     #return HttpResponse(f'{email} {senha}')
 
-    senha = sha256(senha.encode()).hexdigest()
+    senha = sha256(senha.encode()).hexdigest() 
 
     #Busca usuário que coincide com email e senha
-    usuario = Usuario.objects.filter(email = email).filter(senha = senha)
+    usuario = Usuario.objects.filter(email = email).filter(senha = senha) #
 
     #return HttpResponse(f'{usuario[0].email} {usuario[0].senha} {usuario[0].id}')
     
