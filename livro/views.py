@@ -14,11 +14,9 @@ def home(request):
 
 
 def search(request):
-    return HttpResponse("Página de busca")
     if request.session.get("usuario"):
-        busca = request.POST.get("search")
-        filtro = request.POST.get("filtro")
-        print(busca, filtro)
+        busca = request.GET.get("search")
+        filtro = request.GET.get("filtro")
         re_busca = r"^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$"
 
         if not re.match(re_busca, busca.strip()):
@@ -34,11 +32,11 @@ def search(request):
         page_obj = paginator.get_page(page_number)
 
 
-        if not page_obj.has_next() and page_obj.number != 1:
-            return HttpResponseRedirect(
-                reverse("search")
-                + f"?{request.GET.urlencode()}&page={paginator.num_pages}"
-            )
+        #if not page_obj.has_next() and page_obj.number != 1:
+        #    return HttpResponseRedirect(
+        #        reverse("search")
+         #       + f"?{request.GET.urlencode()}&page={paginator.num_pages}"
+          #  )
 
         return render(request, "homepage.html", {"livros": page_obj})
 
