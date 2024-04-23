@@ -67,7 +67,7 @@
         </div>
       </header>
 <div class="container">
-    <form action="{% url 'search' %}" method="POST" class="form">
+    <form action="{% url 'search' %}" method="GET" class="form">
       {%csrf_token%}
       <div class="search">
         <input
@@ -75,6 +75,7 @@
           id="search"
           name="search"
           class="input"
+          value="{{request.GET.search}}"
           placeholder="Pesquisa"
         />
 
@@ -103,6 +104,7 @@
         <option value="genero" name="genero">Gênero</option>
       </select>
     </form>
+
     <div class="table">
       <table>
           <thead>
@@ -122,12 +124,34 @@
               {% endfor %}
           </tbody>
       </table>
-      <div id="pagination">
-          {% for page_num in pages %}
-              <a href="?page={{ page_num }}">{{ page_num }}</a>
-          {% endfor %}
+      <div id="pagination" class="pagination">
+          {% if livros.has_previous %}
+              {% if request.GET.search %}
+                  <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.previous_page_number }}">Anterior</a>
+              {% else %}
+                  <a href="?page={{ livros.previous_page_number }}">Anterior</a>
+              {% endif %}
+          {% endif %}
+         
+          {% if request.GET.search %}
+              {% for num in livros.paginator.page_range %}
+                 <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ num }}">{{ num }}</a>
+              {% endfor %}
+          {% endif %}
+          
+          
+          {% if livros.has_next %}
+              {% if request.GET.search %}
+                  <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.next_page_number }}">Próxima</a>
+              {% else %}
+                  <a href="?page={{ livros.next_page_number }}">Próxima</a>
+              {% endif %}
+          {% endif %}
+
       </div>
+
   </div>
-  </div>
+</div>
+    
   </body>
 </html>
