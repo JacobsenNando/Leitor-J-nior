@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.urls import reverse
@@ -14,9 +14,11 @@ def home(request):
 
 
 def search(request):
+    return HttpResponse("Página de busca")
     if request.session.get("usuario"):
         busca = request.POST.get("search")
         filtro = request.POST.get("filtro")
+        print(busca, filtro)
         re_busca = r"^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$"
 
         if not re.match(re_busca, busca.strip()):
@@ -31,6 +33,7 @@ def search(request):
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
+
         if not page_obj.has_next() and page_obj.number != 1:
             return HttpResponseRedirect(
                 reverse("search")
@@ -38,7 +41,6 @@ def search(request):
             )
 
         return render(request, "homepage.html", {"livros": page_obj})
-
 
 def ver_livro(request, id):
     if request.session.get("usuario"):
