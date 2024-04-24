@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.urls import reverse
 from .models import Livros
+from usuarios.models import Usuario
 import re
 
 
@@ -41,8 +42,12 @@ def ver_livro(request, id):
 
 #----------------Área administrativa---------------------#
 
-def crud_livro():
-    pass
+def crud_livro(request):
+    if request.session.get("usuario"):
+        if Usuario.objects.get(id=request.session.get("usuario"), admin=True):
+            return HttpResponse('ok')
+        else:
+            return HttpResponseForbidden()
 
 def cadastrar_livro(request):
     pass
