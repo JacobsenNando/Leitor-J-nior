@@ -42,6 +42,20 @@ def ver_livro(request, id):
 
 #-------------------------Área administrativa------------------------------#
 
+"""
+################--Status Cadastro Livro--#################
+                                                         #
+0 = Cadastro realizado com sucesso                       #
+1 = Falha no cadastro, titulo, autor ou genero em branco #
+2 = N/A                                                  #
+3 = Flaha no cadastro, livro já cadastrado               #
+4 = Erro ao realizar cadastro                            #
+                                                         #
+##########################################################
+""" 
+
+
+
 def cadastrar_livro(request):
     if request.session.get("usuario") and request.session.get("admin"):
         return render(request, "cad_livro.html")
@@ -53,6 +67,23 @@ def valida_cadastro_livro(request):
         titulo = request.POST.get("titulo")
         autor = request.POST.get("autor")
         genero = request.POST.get("genero")
+
+        livro = Usuario.objects.filter(titulo = titulo).filter(autor = autor)
+
+        #---Verificações
+        if len(titulo.strip()) == 0 or len(autor.strip()) == 0 or len(genero.strip()) == 0:
+            return redirect('cadastrar_livro/?status=1')
+        if len(livro) > 0:
+            return redirect('cadastrar_livro/?status=3')
+        
+        try:
+            livro = Livros(titulo = titulo,
+                           autor = autor,
+                           genero = genero)
+            livro.save()
+            return redirect('cadastrar_livro/?status=0')
+        except:
+            return redirect('cadastrar_livro/?status=4')
 
         
     else:
