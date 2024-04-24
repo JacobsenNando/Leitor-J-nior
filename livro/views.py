@@ -37,3 +37,17 @@ def ver_livro(request, id):
     if request.session.get("usuario"):
         livro = Livros.objects.get(id=id)
         return render(request, "ver_livro.html", {"livro": livro})
+
+
+#----------------Área administrativa---------------------#
+
+def crud_livro():
+    pass
+
+def cadastrar_livro(request):
+    pass
+def editar_livro(request):
+    pass
+def deletar_livro(request):
+    pass
+
