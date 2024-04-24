@@ -5,28 +5,22 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" type="text/css" href="../static/style/layout.css" />
-    <link rel="stylesheet" type="text/css" href="../static/style/reset.css" />
-
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'style/home_layout.css' %}"
+      href="{% static 'style/search.css' %}"
     />
     <link
       rel="stylesheet"
       type="text/css"
       href="{% static 'style/reset.css' %}"
     />
-    <link
+     <link
       rel="stylesheet"
       type="text/css"
       href="{% static 'style/page.css' %}"
-    />
+    /> 
   </head>
-
-  <body>
     <body>
       <header class="header">
         <div class="logo">
@@ -67,44 +61,45 @@
           </form>
         </div>
       </header>
-<div class="contSEARCH">
-    <form action="{% url 'search' %}" method="GET" class="form">
-      {%csrf_token%}
-      <div class="search">
-        <input
-          type="text"
-          id="search"
-          name="search"
-          class="input"
-          value="{{request.GET.search}}"
-          placeholder="Pesquisa"
-        />
 
-        <button class="button" type="submit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-search"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-        </button>
-      </div>
-
-      <select class="filtro" name="filtro" id="filtro">
-        <option value="titulo" name="titulo">Título</option>
-        <option value="autor" name="autor">Autor</option>
-        <option value="genero" name="genero">Gênero</option>
-      </select>
-    </form>
+      <div class="container">
+        <form action="{% url 'search' %}" method="GET" class="form">
+          {%csrf_token%}
+          <div class="search">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              class="input"
+              value="{{request.GET.search}}"
+              placeholder="Pesquisa"
+            />
+    
+            <button class="button" type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </button>
+          </div>
+    
+          <select class="filtro" name="filtro" id="filtro">
+            <option value="titulo" name="titulo">Título</option>
+            <option value="autor" name="autor">Autor</option>
+            <option value="genero" name="genero">Gênero</option>
+          </select>
+        </form>
 
   </div>
 </div>

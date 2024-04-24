@@ -42,23 +42,35 @@ def ver_livro(request, id):
 
 #-------------------------Área administrativa------------------------------#
 
-def crud_livro(request):
-    if request.session.get("usuario") and request.session.get("admin"):
-        return render(request, "cad_livro.html")
-    else:
-        return HttpResponseForbidden()
-
 def cadastrar_livro(request):
     if request.session.get("usuario") and request.session.get("admin"):
         return render(request, "cad_livro.html")
     else:
         return HttpResponseForbidden()
-def editar_livro(request):
+
+def valida_cadastro_livro(request):
+    if request.session.get("usuario") and request.session.get("admin"):
+        titulo = request.POST.get("titulo")
+        autor = request.POST.get("autor")
+        genero = request.POST.get("genero")
+
+        
+    else:
+        return HttpResponseForbidden()
+    
+def editar_livro(request, id):
     if request.session.get("usuario") and request.session.get("admin"):
         return render(request, "cad_livro.html")
     else:
         return HttpResponseForbidden()
-def deletar_livro(request):
+    
+def valida_edicao_livro(request):
+    if request.session.get("usuario") and request.session.get("admin"):
+        return render(request, "cad_livro.html")
+    else:
+        return HttpResponseForbidden()
+
+def valida_exclusao_livro(request):
     if request.session.get("usuario") and request.session.get("admin"):
         return render(request, "cad_livro.html")
     else:
