@@ -91,7 +91,8 @@ def valida_login(request):
         return redirect('/auth/login/?status=1')
     elif len(usuario) > 0:
         request.session['usuario'] = usuario[0].id
-        return redirect('/livro/home/') #?id_usuario={request.session["usuario"]}
+        request.session['admin'] = usuario[0].admin
+        return redirect('/livro/home/') #?id_usuario={request.session["usuario"]}&admin={request.session["admin"]}
 
 #---------------------Logout--------------------------#
 #Limpa session para fazer logout do usuário do sistema#
