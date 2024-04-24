@@ -5,6 +5,7 @@ from django.urls import reverse
 from .models import Livros
 from usuarios.models import Usuario
 import re
+from urllib.parse import urlparse
 
 
 def home(request):
@@ -16,8 +17,13 @@ def home(request):
 
 def search(request):
     if request.session.get("usuario"):
+        referer_url = request.META.get("HTTP_REFERER") # URL de onde veio a requisição
+        url_path = urlparse(referer_url).path          # Caminho da URL de onde veio a requisição
+
         busca = request.GET.get("search")
         filtro = request.GET.get("filtro")
+        
+        # Verifica se a busca é válida
         re_busca = r"^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$"
 
         if not re.match(re_busca, busca.strip()):
@@ -28,20 +34,30 @@ def search(request):
 
         resultado = Livros.objects.filter(**{f"{filtro}__icontains": busca})
 
+        #Realiza a paginação dos resultados
         paginator = Paginator(resultado, 20)  # Paginar os resultados, 20 por página
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
-        return render(request, "home_page.html", {"livros": page_obj})
+
+        # Verifica de onde veio a requisição e renderiza a página correta
+        if url_path == "/livro/search/" or url_path == "/livro/home/": # Verifica se a requisição veio da home ou da página de busca
+            return render(request, "home_page.html", {"livros": page_obj})
+        elif url_path == "cadastrar_livro/": # Verifica se a requisição veio da página de cadastro de livro
+            return render(request, "cad_livro.html", {"livros": page_obj})
+        elif url_path == "editar_livro/": #Verifica se a requisição veio da página de edição de livro
+            return render(request, "insira_aqui_o_arquivo.html", {"livros": page_obj})
+        else:
+            return HttpResponseForbidden()
 
 def ver_livro(request, id):
     if request.session.get("usuario"):
         livro = Livros.objects.get(id=id)
         return render(request, "ver_livro.html", {"livro": livro})
 
-
+############################################################################
 #-------------------------Área administrativa------------------------------#
-
+############################################################################
 """
 ################--Status Cadastro Livro--#################
                                                          #
@@ -91,13 +107,48 @@ def valida_cadastro_livro(request):
     
 def editar_livro(request, id):
     if request.session.get("usuario") and request.session.get("admin"):
-        return render(request, "cad_livro.html")
+        livro = Livros.objects.get(id=id)
+        return render(request, "insira_aqui_o_arquivo.html", {"livro": livro})
+    
     else:
         return HttpResponseForbidden()
-    
+
+
+"""
+#################--Status Edição Livro--##################
+                                                         #
+0 = Edição realizada com sucesso                         #
+1 = Falha na edição, titulo, autor ou genero em branco   #
+2 = N/A                                                  #
+3 = Flaha na edição, já existe um livro com estes dados  #
+4 = Erro ao editar livro                                 #
+                                                         #
+##########################################################
+""" 
 def valida_edicao_livro(request):
     if request.session.get("usuario") and request.session.get("admin"):
-        return render(request, "cad_livro.html")
+        titulo = request.POST.get("titulo")
+        autor = request.POST.get("autor")
+        genero = request.POST.get("genero")
+
+        livro = Livros.objects.get(id=id)
+
+        #---Verificações
+        if len(titulo.strip()) == 0 or len(autor.strip()) == 0 or len(genero.strip()) == 0: 
+            return redirect('editar_livro/?status=1')
+        
+        livro_existente = Livros.objects.filter(titulo__iexact = titulo).filter(autor__iexact = autor)
+        if len(livro_existente) > 0:
+            return redirect('editar_livro/?status=3')
+        
+        try:
+            livro = Livros(titulo = titulo,
+                           autor = autor,
+                           genero = genero)
+            livro.save()
+            return redirect('editar_livro/?status=0')
+        except:
+            return redirect('editar_livro/?status=4')
     else:
         return HttpResponseForbidden()
 
@@ -106,4 +157,3 @@ def valida_exclusao_livro(request):
         return render(request, "cad_livro.html")
     else:
         return HttpResponseForbidden()
-
