@@ -31,13 +31,6 @@ def search(request):
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
-
-        #if not page_obj.has_next() and page_obj.number != 1:
-        #    return HttpResponseRedirect(
-        #        reverse("search")
-         #       + f"?{request.GET.urlencode()}&page={paginator.num_pages}"
-          #  )
-
         return render(request, "homepage.html", {"livros": page_obj})
 
 def ver_livro(request, id):
