@@ -5,6 +5,14 @@
   width: 100%;
   margin-top: 1rem;
 }
+.contSEARCH {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+ 
+}
 .form {
   background-color: rgba(255, 255, 255);
   width: 24rem;

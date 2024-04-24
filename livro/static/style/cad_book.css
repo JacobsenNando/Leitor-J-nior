@@ -1,0 +1,65 @@
+button {
+    background: none;
+    border: 1px solid rgb(175, 175, 175);
+    padding: 10px 10px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    transition: 0.4s ease-in-out;
+  }
+  
+  button:hover {
+    box-shadow: 4px 4px 0px #727275, -3px -3px 10px #ffffff;
+  }
+  
+  button svg {
+    color: #000000;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: 0.4s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
+    margin-left: 5rem;
+    margin-top: 5rem;
+    width: 35%;
+  }
+  input {
+    border-radius: 0.5rem;
+    border: 1px solid rgb(175, 175, 175);
+    outline: none;
+    padding: 0.7em;
+    transition: 0.4s ease-in-out;
+    width: 22rem;
+    cursor: pointer;
+  }
+  
+  input:hover {
+    box-shadow: 4px 4px 0px #727275, -3px -3px 10px #ffffff;
+  }
+  
+  input:focus {
+    background: #ffffff;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+  .preview {
+    border: 1px solid #ccc;
+    width: 22rem;
+  }
+  .preview img {
+    width: 100%;
+    height: auto;
+  }
+  

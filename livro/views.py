@@ -9,7 +9,7 @@ import re
 
 def home(request):
     if request.session.get("usuario"):
-        return render(request, "homepage.html")
+        return render(request, "search_page.html")
     else:
         return redirect("/auth/login/?status=2")
 
@@ -32,7 +32,7 @@ def search(request):
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
 
-        return render(request, "homepage.html", {"livros": page_obj})
+        return render(request, "home_page.html", {"livros": page_obj})
 
 def ver_livro(request, id):
     if request.session.get("usuario"):
@@ -40,19 +40,27 @@ def ver_livro(request, id):
         return render(request, "ver_livro.html", {"livro": livro})
 
 
-#----------------Área administrativa---------------------#
+#-------------------------Área administrativa------------------------------#
 
 def crud_livro(request):
-    if request.session.get("usuario"):
-        if Usuario.objects.get(id=request.session.get("usuario"), admin=True):
-            return HttpResponse('ok')
-        else:
-            return HttpResponseForbidden()
+    if request.session.get("usuario") and request.session.get("admin"):
+        return render(request, "cad_livro.html")
+    else:
+        return HttpResponseForbidden()
 
 def cadastrar_livro(request):
-    pass
+    if request.session.get("usuario") and request.session.get("admin"):
+        return render(request, "cad_livro.html")
+    else:
+        return HttpResponseForbidden()
 def editar_livro(request):
-    pass
+    if request.session.get("usuario") and request.session.get("admin"):
+        return render(request, "cad_livro.html")
+    else:
+        return HttpResponseForbidden()
 def deletar_livro(request):
-    pass
+    if request.session.get("usuario") and request.session.get("admin"):
+        return render(request, "cad_livro.html")
+    else:
+        return HttpResponseForbidden()
 

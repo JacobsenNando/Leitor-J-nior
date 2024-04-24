@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from .models import Usuario
 from django.shortcuts import redirect
 from hashlib import sha256
-
+#admin@admin.com
+#admin1234
 def login(request):
     if request.session.get("usuario"): #Verifica se o usuário já está logado, se sim, redireciona para a home
         return redirect('/livro/home/')
