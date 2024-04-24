@@ -151,9 +151,29 @@ def valida_edicao_livro(request):
             return redirect('editar_livro/?status=4')
     else:
         return HttpResponseForbidden()
+    
+
+"""
+################--Status Exclusão Livro--#################
+                                                         #
+0 = Exclusão realizada com sucesso                       #
+1 = N/A                                                  #
+2 = N/A                                                  #
+3 = N/A                                                  #
+4 = Erro ao editar livro                                 #
+                                                         #
+##########################################################
+""" 
 
 def valida_exclusao_livro(request):
     if request.session.get("usuario") and request.session.get("admin"):
-        return render(request, "cad_livro.html")
+        id = request.DELETE.get("id")
+
+        try:
+            livro = Livros.objects.get(id=id)
+            livro.delete()
+            return redirect('editar_livro/?status=0')
+        except:
+            return redirect('editar_livro/?status=4')
     else:
         return HttpResponseForbidden()
