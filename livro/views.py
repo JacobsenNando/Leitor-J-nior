@@ -84,22 +84,22 @@ def valida_cadastro_livro(request):
         autor = request.POST.get("autor")
         genero = request.POST.get("genero")
 
-        livro = Usuario.objects.filter(titulo = titulo).filter(autor = autor)
+        livro = Livros.objects.filter(titulo = titulo).filter(autor = autor)
 
         #---Verificações
         if len(titulo.strip()) == 0 or len(autor.strip()) == 0 or len(genero.strip()) == 0:
-            return redirect('cadastrar_livro/?status=1')
+            return redirect('/livro/cadastrar_livro/?status=1')
         if len(livro) > 0:
-            return redirect('cadastrar_livro/?status=3')
+            return redirect('/livro/cadastrar_livro/?status=3')
         
         try:
             livro = Livros(titulo = titulo,
                            autor = autor,
                            genero = genero)
             livro.save()
-            return redirect('cadastrar_livro/?status=0')
+            return redirect('/livro/cadastrar_livro/?status=0')
         except:
-            return redirect('cadastrar_livro/?status=4')
+            return redirect('/livro/cadastrar_livro/?status=4')
 
         
     else:
@@ -135,20 +135,20 @@ def valida_edicao_livro(request):
 
         #---Verificações
         if len(titulo.strip()) == 0 or len(autor.strip()) == 0 or len(genero.strip()) == 0: 
-            return redirect('editar_livro/?status=1')
+            return redirect('/livro/editar_livro/?status=1')
         
         livro_existente = Livros.objects.filter(titulo__iexact = titulo).filter(autor__iexact = autor)
         if len(livro_existente) > 0:
-            return redirect('editar_livro/?status=3')
+            return redirect('/livro/editar_livro/?status=3')
         
         try:
             livro = Livros(titulo = titulo,
                            autor = autor,
                            genero = genero)
             livro.save()
-            return redirect('editar_livro/?status=0')
+            return redirect('/livro/editar_livro/?status=0')
         except:
-            return redirect('editar_livro/?status=4')
+            return redirect('/livro/editar_livro/?status=4')
     else:
         return HttpResponseForbidden()
     
@@ -172,8 +172,8 @@ def valida_exclusao_livro(request):
         try:
             livro = Livros.objects.get(id=id)
             livro.delete()
-            return redirect('editar_livro/?status=0')
+            return redirect('/livro/editar_livro/?status=0')
         except:
-            return redirect('editar_livro/?status=4')
+            return redirect('/livro/editar_livro/?status=4')
     else:
         return HttpResponseForbidden()
