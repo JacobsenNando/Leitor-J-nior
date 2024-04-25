@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../static/style/page.css" />
-    
+
     {% load static %}
     <link
       rel="stylesheet"
@@ -21,7 +20,6 @@
       type="text/css"
       href="{% static 'style/page.css' %}"
     />
-    
   </head>
 
   <body>
@@ -29,11 +27,6 @@
       <div class="logo">
         <img src="{% static 'images/leitor.gif' %}" alt="Logo" class="logo" />
       </div>
-
-      <div class="logo">
-        <img src="../static/images/leitor.gif" alt="Logo" class="logo" />
-      </div>
-
       <nav class="links">
         <a href="/">Home</a>
         <a href="/about">About</a>
@@ -63,13 +56,18 @@
         </form>
       </div>
     </header>
-    <h1>Cadastro de Livro</h1>
 
-    <div class="container">
-      <form action="{% url 'valida_cadastro_livro' %}" method="POST" class="form">
+   <div class="container">
+    <div class="edit">
+      <form
+        action="{% url 'valida_cadastro_livro' %}"
+        method="POST"
+        class="form"
+      >
         {%csrf_token%}
-        <div>
+        <div class="inputs">
           <input
+            class="input"
             placeholder="Título"
             type="text"
             name="titulo"
@@ -77,6 +75,7 @@
             required
           /><br /><br />
           <input
+            class="input"
             placeholder="Autor"
             type="text"
             name="autor"
@@ -84,20 +83,116 @@
             required
           /><br /><br />
           <input
+            class="input"
             placeholder="Gênero"
             type="text"
             name="genero"
             id="genero"
             required
           /><br /><br />
-          <input type="file" id="imageInput" accept="image/*" />
+          <input
+            class="input"
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            placeholder="Capa do Livro"
+          /><br /><br />
           <div class="preview">
             <div id="preview"></div>
           </div>
         </div>
-        <button type="submit">Cadastrar</button>
-      </form>
+        <div class="botoes">
+          <button class="button cadastrar" type="submit">Cadastrar</button>
+          <button class="button excluir" type="reset">Excluir</button>
+       </div>
+         </form>
     </div>
+
+      <div class="edit2">
+        <form action="{% url 'search' %}" method="GET" class="lista">
+          {%csrf_token%}
+          <div class="search">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              class="input"
+              value="{{request.GET.search}}"
+              placeholder="Pesquisa"
+            />
+
+            <button class="button" type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </button>
+          </div>
+
+          <select class="filtro" name="filtro" id="filtro">
+            <option value="titulo" name="titulo">Título</option>
+            <option value="autor" name="autor">Autor</option>
+            <option value="genero" name="genero">Gênero</option>
+          </select>
+        </form>
+        <div class="table">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Título</th>
+                      <th>Autor</th>
+                      <th>Gênero</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for livro in livros %}
+                  <tr>
+                      <td><a href="/ver_livro/{{ livro.id }}">{{ livro.titulo }}</a></td>
+                      <td>{{ livro.autor }}</td>
+                      <td>{{ livro.genero }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          <div id="pagination" class="pagination">
+              {% if livros.has_previous %}
+                  {% if request.GET.search %}
+                      <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.previous_page_number }}">Anterior</a>
+                  {% else %}
+                      <a href="?page={{ livros.previous_page_number }}">Anterior</a>
+                  {% endif %}
+              {% endif %}
+             
+              {% if request.GET.search %}
+                  {% for num in livros.paginator.page_range %}
+                     <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ num }}">{{ num }}</a>
+                  {% endfor %}
+              {% endif %}
+              
+              
+              {% if livros.has_next %}
+                  {% if request.GET.search %}
+                      <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.next_page_number }}">Próxima</a>
+                  {% else %}
+                      <a href="?page={{ livros.next_page_number }}">Próxima</a>
+                  {% endif %}
+              {% endif %}
+    
+          </div>
+      </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <script src="../static/js/input_imag.js"></script>
   </body>
