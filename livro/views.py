@@ -38,10 +38,10 @@ def search(request):
         paginator = Paginator(resultado, 20)  # Paginar os resultados, 20 por página
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
-
+        
 
         # Verifica de onde veio a requisição e renderiza a página correta
-        if url_path == "/livro/search/" or url_path == "/livro/home/": # Verifica se a requisição veio da home ou da página de busca
+        if url_path == "/livro/search/" or url_path == "/livro/home/" or url_path == "/": # Verifica se a requisição veio da home ou da página de busca
             return render(request, "home_page.html", {"livros": page_obj})
         elif url_path == "cadastrar_livro/": # Verifica se a requisição veio da página de cadastro de livro
             return render(request, "cad_livro.html", {"livros": page_obj})
