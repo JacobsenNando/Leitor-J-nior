@@ -43,7 +43,7 @@ def search(request):
         # Verifica de onde veio a requisição e renderiza a página correta
         if url_path == "/livro/search/" or url_path == "/livro/home/" or url_path == "/": # Verifica se a requisição veio da home ou da página de busca
             return render(request, "home_page.html", {"livros": page_obj})
-        elif url_path == "/livro/cadastrar_livro/": # Verifica se a requisição veio da página de cadastro de livro
+        elif url_path == "cadastrar_livro/": # Verifica se a requisição veio da página de cadastro de livro
             return render(request, "cad_livro.html", {"livros": page_obj})
         elif url_path == "editar_livro/": #Verifica se a requisição veio da página de edição de livro
             return render(request, "insira_aqui_o_arquivo.html", {"livros": page_obj})
