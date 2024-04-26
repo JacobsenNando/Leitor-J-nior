@@ -148,51 +148,6 @@
           </select>
         </form>
         <div id="bookList" class="table">
-          <table>
-              <thead>
-                  <tr>
-                      <th>Título</th>
-                      <th>Autor</th>
-                      <th>Gênero</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {% for livro in livros %}
-                  <tr>
-                      <td><a href="/ver_livro/{{ livro.id }}">{{ livro.titulo }}</a></td>
-                      <td>{{ livro.autor }}</td>
-                      <td>{{ livro.genero }}</td>
-                      <td><button class="editButton">editar</button></td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
-          </table>
-          <div id="pagination" class="pagination">
-              {% if livros.has_previous %}
-                  {% if request.GET.search %}
-                      <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.previous_page_number }}">Anterior</a>
-                  {% else %}
-                      <a href="?page={{ livros.previous_page_number }}">Anterior</a>
-                  {% endif %}
-              {% endif %}
-             
-              {% if request.GET.search %}
-                  {% for num in livros.paginator.page_range %}
-                     <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ num }}">{{ num }}</a>
-                  {% endfor %}
-              {% endif %}
-              
-              
-              {% if livros.has_next %}
-                  {% if request.GET.search %}
-                      <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.next_page_number }}">Próxima</a>
-                  {% else %}
-                      <a href="?page={{ livros.next_page_number }}">Próxima</a>
-                  {% endif %}
-              {% endif %}
-    
-          </div>
-      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
