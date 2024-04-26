@@ -110,7 +110,7 @@
     </div>
 
       <div class="edit2">
-        <form action="{% url 'search' %}" method="GET" class="lista">
+        <form id="searchForm" action="{% url 'search' %}" method="GET" class="lista">
           {%csrf_token%}
           <div class="search">
             <input
@@ -194,9 +194,10 @@
           </div>
       </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <script src="../static/js/input_imag.js"></script>
     <script src="{% static 'js/edit.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
   </body>
 </html>
