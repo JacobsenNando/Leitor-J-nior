@@ -102,8 +102,9 @@
           </div>
         </div>
         <div class="botoes">
-          <button class="button cadastrar" type="submit">Cadastrar</button>
-          <button class="button excluir" type="reset">Excluir</button>
+          <button class="button cadastrar"  type="submit">Cadastrar</button>
+          <button id="submitEdit" class="button excluir" style="display: none;" type="button">Excluir</button>
+          <button id="cancelEdit" class="button excluir" style="display: none;" type="button">Excluir</button>
        </div>
          </form>
     </div>
@@ -161,6 +162,7 @@
                       <td><a href="/ver_livro/{{ livro.id }}">{{ livro.titulo }}</a></td>
                       <td>{{ livro.autor }}</td>
                       <td>{{ livro.genero }}</td>
+                      <td><button class="editButton">editar</button></td>
                   </tr>
                   {% endfor %}
               </tbody>
@@ -195,5 +197,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <script src="../static/js/input_imag.js"></script>
+    <script src="{% static 'js/edit.js' %}"></script>
   </body>
 </html>
