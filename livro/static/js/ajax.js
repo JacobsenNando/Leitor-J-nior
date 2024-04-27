@@ -36,7 +36,12 @@ $(document).ready(function() {
           method: "GET",
           data: formData,
           success: function(response) {
-              $("#bookList").html(response); // Atualiza a lista de livros com os resultados da busca
+              $("#bookList").html(response);
+              if (response.trim().length > 0) {
+                $("#bookList").addClass("table"); // Adiciona a classe se houver resultados
+            } else {
+                $("#bookList").removeClass("table"); // Remove a classe se não houver resultados
+            } // Atualiza a lista de livros com os resultados da busca
           },
           error: function(xhr, status, error) {
               console.error(xhr.responseText); // Trata erros, se houver
