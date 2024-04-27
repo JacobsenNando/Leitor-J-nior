@@ -60,6 +60,7 @@
    <div class="container">
     <div class="edit">
       <form
+        id="crudForm"
         action="{% url 'valida_cadastro_livro' %}"
         method="POST"
         class="form"
@@ -102,15 +103,16 @@
           </div>
         </div>
         <div class="botoes">
-          <button id="cadastrar"class="button cadastrar"  type="submit" style="display: block">Cadastrar</button>
+          <button id="cadastrar"class="button cadastrar"  type="button" style="display: block">Cadastrar</button>
           <button id="submitEdit" class="button excluir" style="display: none;" type="button">Editar</button>
+          <button id="botaoDeletar" class="button excluir" style="display: none;" type="button">Excluir</button>
           <button id="cancelEdit" class="button excluir" style="display: none;" type="button">Cancelar edição</button>
        </div>
          </form>
     </div>
 
       <div class="edit2">
-        <form id="searchForm" action="{% url 'search' %}" method="GET" class="lista">
+        <form id="searchForm" action="{% url 'search_admin' %}" method="GET" class="lista">
           {%csrf_token%}
           <div class="search">
             <input
@@ -154,5 +156,6 @@
     <script src="../static/js/input_imag.js"></script>
     <script src="{% static 'js/edit.js' %}"></script>
     <script src="{% static 'js/ajax.js' %}"></script>
+    <script src="{% static 'js/crud.js' %}"></script>
   </body>
 </html>

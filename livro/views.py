@@ -17,9 +17,6 @@ def home(request):
 
 def search(request):
     if request.session.get("usuario"):
-        referer_url = request.META.get("HTTP_REFERER") # URL de onde veio a requisição
-        url_path = urlparse(referer_url).path          # Caminho da URL de onde veio a requisição
-
         busca = request.GET.get("search")
         filtro = request.GET.get("filtro")
         
@@ -38,11 +35,6 @@ def search(request):
         paginator = Paginator(resultado, 20)  # Paginar os resultados, 20 por página
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
-        
-
-        # Verifica de onde veio a requisição e renderiza a página correta
-        #if url_path == "/livro/cadastrar_livro/" or url_path == "/cadastrar_livro/":
-        return render(request, "partial_search.html", {"livros": page_obj}) # Verifica se a requisição veio da página de cadastro de livro
         
         return render(request, "home_page.html", {"livros": page_obj})
 
@@ -173,3 +165,31 @@ def valida_exclusao_livro(request):
             return redirect('/livro/editar_livro/?status=4')
     else:
         return HttpResponseForbidden()
+
+
+
+
+def search_admin(request):
+        if request.session.get("usuario") and request.session.get("admin"):
+            busca = request.GET.get("search")
+            filtro = request.GET.get("filtro")
+            
+            # Verifica se a busca é válida
+            re_busca = r"^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$"
+
+            if not re.match(re_busca, busca.strip()):
+                return HttpResponseForbidden()
+
+            if filtro not in ["titulo", "autor", "genero"]:
+                return HttpResponseForbidden()
+
+            resultado = Livros.objects.filter(**{f"{filtro}__icontains": busca})
+
+            #Realiza a paginação dos resultados
+            paginator = Paginator(resultado, 20)  # Paginar os resultados, 20 por página
+            page_number = request.GET.get("page")
+            page_obj = paginator.get_page(page_number)
+            
+            return render(request, "partial_search.html", {"livros": page_obj}) # Verifica se a requisição veio da página de cadastro de livro
+        else:
+            return HttpResponseForbidden()

@@ -18,7 +18,7 @@ $(document).ready(function() {
   // Manipulador de eventos para os links de paginação
   $("#bookList").on("click", "a", function(event) {
       event.preventDefault(); // Evita o comportamento padrão de clique no link
-      var path = "/livro/search/"; // Obtém o caminho da URL atual
+      var path = "/livro/search_admin/"; // Obtém o caminho da URL atual
       var href = $(this).attr("href"); // Obtém a URL do link clicado
       var url = window.location.origin + path + href; // Monta a URL completa
       carregarPagina(url); // Carrega a página via AJAX
