@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/cad_book.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/reset.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'style/page.css' %}"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img src="{% static 'images/leitor.gif' %}" alt="Logo" class="logo" />
+      </div>
+      <nav class="links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+
+      <div class="but">
+        <form action="" method="GET">
+          <button class="logout" type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-log-out"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" x2="9" y1="12" y2="12" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </header>
+
+   <div class="container">
+    <div class="edit">
+      <form
+        id="crudForm"
+        action="{% url 'valida_cadastro_livro' %}"
+        method="POST"
+        class="form"
+      >
+        {%csrf_token%}
+        <div class="inputs">
+          <input
+            class="input"
+            placeholder="Id"
+            type="text"
+            name="id"
+            id="id"
+            readonly
+            style="display: none;"
+          /><br /><br />
+          <input
+            class="input"
+            placeholder="Título"
+            type="text"
+            name="titulo"
+            id="titulo"
+            required
+          /><br /><br />
+          <input
+            class="input"
+            placeholder="Autor"
+            type="text"
+            name="autor"
+            id="autor"
+            required
+          /><br /><br />
+          <input
+            class="input"
+            placeholder="Gênero"
+            type="text"
+            name="genero"
+            id="genero"
+            required
+          /><br /><br />
+          <input
+            class="input"
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            placeholder="Capa do Livro"
+          /><br /><br />
+          <div class="preview">
+            <div id="preview"></div>
+          </div>
+        </div>
+        <div class="botoes">
+          <button id="cadastrar"class="button cadastrar"  type="button" style="display: block">Cadastrar</button>
+          <button id="submitEdit" class="button excluir" style="display: none;" type="button">Editar</button>
+          <button id="botaoDeletar" class="button excluir" style="display: none;" type="button">Excluir</button>
+          <button id="cancelEdit" class="button excluir" style="display: none;" type="button">Cancelar edição</button>
+       </div>
+         </form>
+    </div>
+
+      <div class="edit2">
+        <form id="searchForm" action="{% url 'search_admin' %}" method="GET" class="lista">
+          {%csrf_token%}
+          <div class="search">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              class="input"
+              value="{{request.GET.search}}"
+              placeholder="Pesquisa"
+            />
+
+            <button class="button" type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </button>
+          </div>
+
+          <select class="filtro" name="filtro" id="filtro">
+            <option value="titulo" name="titulo">Título</option>
+            <option value="autor" name="autor">Autor</option>
+            <option value="genero" name="genero">Gênero</option>
+          </select>
+        </form>
+        <div display: none; id="bookList">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
+    <script src="../static/js/input_imag.js"></script>
+    <script src="{% static 'js/edit.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
+    <script src="{% static 'js/crud.js' %}"></script>
+  </body>
+</html>
