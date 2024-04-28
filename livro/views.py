@@ -32,7 +32,7 @@ def search(request):
         resultado = Livros.objects.filter(**{f"{filtro}__icontains": busca})
 
         #Realiza a paginação dos resultados
-        paginator = Paginator(resultado, 20)  # Paginar os resultados, 20 por página
+        paginator = Paginator(resultado, 15)  # Paginar os resultados, 20 por página
         page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
         
@@ -197,7 +197,7 @@ def search_admin(request):
             resultado = Livros.objects.filter(**{f"{filtro}__icontains": busca})
 
             #Realiza a paginação dos resultados
-            paginator = Paginator(resultado, 20)  # Paginar os resultados, 20 por página
+            paginator = Paginator(resultado, 15)  # Paginar os resultados, 20 por página
             page_number = request.GET.get("page")
             page_obj = paginator.get_page(page_number)
             
