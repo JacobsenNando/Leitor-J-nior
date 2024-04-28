@@ -46,7 +46,7 @@ def ver_livro(request, id):
 
 def publica_resenha(request):
     if request.session.get("usuario"):
-        id_livro = 2 #request.POST.get("id")
+        id_livro = request.POST.get("id_livro")
         resenha = request.POST.get("resenha")
         avaliacao = request.POST.get("rate")
 
@@ -58,9 +58,9 @@ def publica_resenha(request):
 
         #---Verificações
         if len(resenha.strip())  == 0 or avaliacao == 0:
-            return redirect('/auth/cadastro/?status=1')
+            return redirect(f'/livro/ver_livro/{id_livro}?status=1')
         if len(resenha_bd) > 0:
-            return redirect('/livro/cadastrar_livro/?status=3')
+            return redirect(f'/livro/ver_livro/{id_livro}?status=3')
         if len(resenha_bd) == 0:
             try:
                 resenha_bd = Resenhas(resenha = resenha,
@@ -71,10 +71,10 @@ def publica_resenha(request):
                             livro_fk_id = livro.id,
                             usuario_fk = usuario)
                 avaliacao_bd.save()
-                return redirect('/livro/cadastrar_livro/?status=0')
+                return redirect(f'/livro/ver_livro/{id_livro}?status=0')
             except Exception as erro:
                 print("erro:", erro)
-                return redirect('/livro/cadastrar_livro/?status=4')
+                return redirect(f'/livro/ver_livro/{id_livro}?status=4')
 
 
 ############################################################################
