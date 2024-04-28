@@ -1,11 +1,19 @@
+.titulo{
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
-  margin-top: 15rem;
+  height: 82.5vh;
 }
-.form {
-  background-color: rgba(255, 255, 255);
+.form  {
+  background-color: rgb(255, 240, 207);
   width: 24rem;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -18,14 +26,15 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+  
 }
 .input {
   border-radius: 0.5rem;
   border: 1px solid rgb(74, 74, 74);
-  outline: none;
   padding: 0.7em;
   transition: 0.4s ease-in-out;
-  width: 22rem;
+  width: 30rem;
+  background-color: rgb(255, 240, 207);
 }
 
 .input:hover {
@@ -33,11 +42,11 @@
 }
 
 .input:focus {
-  background: #ffffff;
+  background: rgb(255, 240, 207);
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
 }
-button {
-  background: none;
+.button {
+  background:rgb(255, 240, 207);
   border: 1px solid rgb(175, 175, 175);
   padding: 10px 10px;
   border-radius: 0.5rem;
@@ -48,10 +57,28 @@ button {
   transition: 0.4s ease-in-out;
 }
 
-button:hover {
+.button:hover {
   box-shadow: 4px 4px 0px #727275, -3px -3px 10px #ffffff;
 }
 
-button svg {
+.button svg {
   color: #000000;
+}
+.filtro {
+  background: none;
+  border: 1px solid rgb(175, 175, 175);
+  padding: 5px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.filtro:hover {
+  box-shadow: 4px 4px 0px #727275, -3px -3px 10px #ffffff;
+  transition: 0.4s ease-in-out;
+}
+
+.filtro:focus {
+  background: #ffffff;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
 }
