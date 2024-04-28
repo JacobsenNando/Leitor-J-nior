@@ -68,9 +68,9 @@ def publica_resenha(request):
                             usuario_fk = usuario)
                 resenha_bd.save()
                 avaliacao_bd = Avaliacoes(nota = avaliacao,
-                            livro_fk = id_livro,
-                            usuario_fk = usuario.id)
-                avaliacao.save()
+                            livro_fk_id = livro.id,
+                            usuario_fk = usuario)
+                avaliacao_bd.save()
                 return redirect('/livro/cadastrar_livro/?status=0')
             except Exception as erro:
                 print("erro:", erro)
