@@ -1,71 +1,54 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Manipulador de evento para o botão "Cadastrar"
-    document.getElementById("cadastrar").addEventListener("click", function() {
-        enviarRequisicao("/valida_cadastro_livro/", "POST");
-    });
-
-    // Manipulador de evento para o botão "Editar"
-    document.getElementById("submitEdit").addEventListener("click", function() {
-        enviarRequisicao("URL_para_Editar", "PUT");
-    });
-
-    // Manipulador de evento para o botão "Deletar"
-    document.getElementById("botaoDeletar").addEventListener("click", function() {
-        enviarRequisicao("URL_para_Deletar", "DELETE");
-    });
+  // Manipulador de evento para o botão "Cadastrar"
+  $("#cadastrar").click(function() {
+    var url = window.location.origin + "/livro/valida_cadastro_livro/";
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    enviarRequisicao(url, "POST", csrftoken);
 });
 
-// Função para enviar uma requisição Ajax com um método específico
-function enviarRequisicao(url, metodo) {
-    var xhr = new XMLHttpRequest(); // Cria um objeto XMLHttpRequest
+// Manipulador de evento para o botão "Editar"
+$("#submitEdit").click(function() {
+    var url = window.location.origin + "/livro/valida_edicao_livro/";
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    enviarRequisicao(url, "POST", csrftoken);
+});
 
-    // Configura a requisição Ajax
-    xhr.open(metodo, url);
+// Manipulador de evento para o botão "Deletar"
+$("#botaoDeletar").click(function() {
+    var url = window.location.origin + "/livro/valida_exclusao_livro/";
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    enviarRequisicao(url, "POST", csrftoken);
+    // Limpa os campos do formulário
+    document.getElementById("id").value = id;
+    document.getElementById("titulo").value = "";
+    document.getElementById("autor").value = "";
+    document.getElementById("genero").value = "";
 
-    // Obtém o token CSRF do cookie
-    var csrftoken = getCookie('csrftoken');
+    // Esconde os botões "enviar edição" e "cancelar edição"
+    document.getElementById("id").style.display = "none";
+    document.getElementById("cadastrar").style.display = "block";
+    document.getElementById("submitEdit").style.display = "none";
+    document.getElementById("cancelEdit").style.display = "none";
+    document.getElementById("botaoDeletar").style.display = "none";
+});
 
-    // Define o cabeçalho da requisição com o token CSRF
-    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-
-    // Define o manipulador de eventos para quando a requisição for concluída
-    xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            // Requisição bem-sucedida
-            // Faça algo com a resposta, se necessário
-            console.log(xhr.responseText);
-        } else {
-            // Requisição falhou
-            console.error('Erro ao enviar requisição:', xhr.statusText);
+// Função para enviar a requisição Ajax com um método específico
+function enviarRequisicao(url, metodo, csrftoken) {
+    $.ajax({
+        url: url,
+        type: metodo,
+        data: $("#crudForm").serialize(), // Serializa os dados do formulário
+        headers: {'X-CSRFToken': csrftoken},
+        mode: 'same-origin', // Do not send CSRF token to another domain.
+        success: function(response) {
+            // Manipule a resposta, se necessário
+            console.log(response);
+        },
+        error: function(xhr, status, error) {
+            // Trate erros, se houver
+            console.error(xhr.responseText);
         }
-    };
-
-    // Define o manipulador de eventos para quando houver um erro na requisição
-    xhr.onerror = function() {
-        console.error('Erro de conexão');
-    };
-
-    // Envia a requisição Ajax
-    xhr.send();
+    });
 }
-
-// Função auxiliar para obter o valor do token CSRF do cookie
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Verifica se o cookie corresponde ao nome do token CSRF
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
 
 
 
