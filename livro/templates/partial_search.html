@@ -1,6 +1,7 @@
 <table>
     <thead>
         <tr>
+            <th style="display: none;": none;>Id</th>
             <th>Título</th>
             <th>Autor</th>
             <th>Gênero</th>
@@ -9,7 +10,8 @@
     <tbody>
         {% for livro in livros %}
         <tr>
-            <td><a href="/ver_livro/{{ livro.id }}">{{ livro.titulo }}</a></td>
+            <td style="display: none;">{{ livro.id }}</td>
+            <td>{{ livro.titulo }}</td>
             <td>{{ livro.autor }}</td>
             <td>{{ livro.genero }}</td>
             <td><button class="editButton">editar</button></td>

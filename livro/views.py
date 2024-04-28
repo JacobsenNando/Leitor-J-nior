@@ -72,6 +72,16 @@ def valida_cadastro_livro(request):
         autor = request.POST.get("autor")
         genero = request.POST.get("genero")
 
+        #xml_body = request.body.decode('utf-8')
+
+        # Analisa o XML
+        #root = ET.fromstring(xml_body)
+
+        # Extrai os dados relevantes do XML
+        #titulo = root.find('titulo').text
+        #autor = root.find('autor').text
+        #genero = root.find('genero').text
+
         livro = Livros.objects.filter(titulo = titulo).filter(autor = autor)
 
         #---Verificações
@@ -115,6 +125,7 @@ def editar_livro(request, id):
 """ 
 def valida_edicao_livro(request):
     if request.session.get("usuario") and request.session.get("admin"):
+        id = request.POST.get("id")
         titulo = request.POST.get("titulo")
         autor = request.POST.get("autor")
         genero = request.POST.get("genero")
@@ -123,20 +134,20 @@ def valida_edicao_livro(request):
 
         #---Verificações
         if len(titulo.strip()) == 0 or len(autor.strip()) == 0 or len(genero.strip()) == 0: 
-            return redirect('/livro/editar_livro/?status=1')
+            return redirect('/livro/valida_edição_livro/?status=1')
         
         livro_existente = Livros.objects.filter(titulo__iexact = titulo).filter(autor__iexact = autor)
         if len(livro_existente) > 0:
-            return redirect('/livro/editar_livro/?status=3')
+            return redirect('/livro/valida_edição_livro/?status=3')
         
         try:
-            livro = Livros(titulo = titulo,
-                           autor = autor,
-                           genero = genero)
+            livro.titulo = titulo
+            livro.autor = autor
+            livro.genero = genero
             livro.save()
-            return redirect('/livro/editar_livro/?status=0')
+            return redirect('/livro/valida_edição_livro/?status=0')
         except:
-            return redirect('/livro/editar_livro/?status=4')
+            return redirect('/livro/valida_edição_livro/?status=4')
     else:
         return HttpResponseForbidden()
     
@@ -155,7 +166,7 @@ def valida_edicao_livro(request):
 
 def valida_exclusao_livro(request):
     if request.session.get("usuario") and request.session.get("admin"):
-        id = request.DELETE.get("id")
+        id = request.POST.get("id")
 
         try:
             livro = Livros.objects.get(id=id)
