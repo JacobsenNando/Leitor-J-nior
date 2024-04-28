@@ -82,6 +82,7 @@ h2 {
   align-items: center;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   padding: 1rem;
   border-radius: 0.5rem;
   transition: 0.4s ease-in-out;

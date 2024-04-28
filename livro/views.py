@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.urls import reverse
-from .models import Livros
+from .models import Livros, Resenhas, Avaliacoes
 from usuarios.models import Usuario
 import re
 from urllib.parse import urlparse
@@ -42,6 +42,39 @@ def ver_livro(request, id):
     if request.session.get("usuario"):
         livro = Livros.objects.get(id=id)
         return render(request, "ver_livro.html", {"livro": livro})
+    
+
+def publica_resenha(request):
+    if request.session.get("usuario"):
+        id_livro = request.POST.get("id")
+        resenha = request.POST.get("resenha")
+        avaliacao = request.POST.get("rate")
+
+        resenha_bd= Resenhas.objects.filter(usuario_fk = request.session.get("usuario")).filter(livro_fk = id_livro)
+        avaliacao_bd= Avaliacoes.objects.filter(usuario_fk = request.session.get("usuario")).filter(livro_fk = id_livro)
+
+        usuario = Usuario.objects.get()
+
+        #---Verificações
+        if len(resenha.strip())  == 0 or avaliacao == 0:
+            return redirect('/auth/cadastro/?status=1')
+        if len(resenha_bd) > 0:
+            return redirect('/livro/cadastrar_livro/?status=3')
+        if len(resenha_bd) == 0:
+            try:
+                resenha_bd = Resenhas(resenha = resenha,
+                            livro_fk = id_livro,
+                            usuario_fk = request.session.get("usuario"))
+                resenha_bd.save()
+                avaliacao_bd = Avaliacoes(nota = avaliacao,
+                            livro_fk = id_livro,
+                            usuario_fk = request.session.get("usuario"))
+                avaliacao.save()
+                return redirect('/livro/cadastrar_livro/?status=0')
+            except Exception as erro:
+                print("erro:", erro)
+                return redirect('/livro/cadastrar_livro/?status=4')
+
 
 ############################################################################
 #-------------------------Área administrativa------------------------------#
