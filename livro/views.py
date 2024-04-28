@@ -46,14 +46,15 @@ def ver_livro(request, id):
 
 def publica_resenha(request):
     if request.session.get("usuario"):
-        id_livro = request.POST.get("id")
+        id_livro = 2 #request.POST.get("id")
         resenha = request.POST.get("resenha")
         avaliacao = request.POST.get("rate")
 
         resenha_bd= Resenhas.objects.filter(usuario_fk = request.session.get("usuario")).filter(livro_fk = id_livro)
         avaliacao_bd= Avaliacoes.objects.filter(usuario_fk = request.session.get("usuario")).filter(livro_fk = id_livro)
 
-        usuario = Usuario.objects.get()
+        usuario = Usuario.objects.get(id=request.session.get("usuario"))
+        livro = Livros.objects.get(id=id_livro)
 
         #---Verificações
         if len(resenha.strip())  == 0 or avaliacao == 0:
@@ -63,12 +64,12 @@ def publica_resenha(request):
         if len(resenha_bd) == 0:
             try:
                 resenha_bd = Resenhas(resenha = resenha,
-                            livro_fk = id_livro,
-                            usuario_fk = request.session.get("usuario"))
+                            livro_fk_id = livro.id,
+                            usuario_fk = usuario)
                 resenha_bd.save()
                 avaliacao_bd = Avaliacoes(nota = avaliacao,
                             livro_fk = id_livro,
-                            usuario_fk = request.session.get("usuario"))
+                            usuario_fk = usuario.id)
                 avaliacao.save()
                 return redirect('/livro/cadastrar_livro/?status=0')
             except Exception as erro:
