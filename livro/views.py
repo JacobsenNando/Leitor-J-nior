@@ -204,3 +204,9 @@ def search_admin(request):
             return render(request, "partial_search.html", {"livros": page_obj}) # Verifica se a requisição veio da página de cadastro de livro
         else:
             return HttpResponseForbidden()
+        
+def sobre(request):
+    if request.session.get("usuario"):
+        return render(request, "sobre.html")
+    else:
+        return redirect("/auth/login/?status=2")
