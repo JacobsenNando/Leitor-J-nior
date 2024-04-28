@@ -113,7 +113,8 @@
   justify-content: center;
   
 }
-.table {
+
+#bookList {
   border-collapse: collapse;
   border-radius: 0.5rem;
   border: 1px solid rgb(175, 175, 175);
@@ -122,17 +123,18 @@
   background-color: white;
   margin-top: 2rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
+  max-height: 40%;
 }
 
-.table th,
-.table td {
+#bookList th,
+#bookList td {
   border-radius: 0.5rem;
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.table th {
+#bookList th {
   background-color: #f2f2f2;
 }
 
