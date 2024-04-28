@@ -11,3 +11,14 @@ class Livros(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+class Resumos(models.Model):
+    livro = models.ForeignKey(Livros, on_delete=models.CASCADE)
+    resumo = models.TextField()
+    usuario = models.ForeignKey("usuarios.Usuarios", on_delete=models.CASCADE)
+    data = models.DateTimeField(auto_now_add=True)
+
+class Avaliacoes(models.Model):
+    livro = models.ForeignKey(Livros, on_delete=models.CASCADE)
+    nota = models.IntegerField()
+    usuario = models.ForeignKey("usuarios.Usuarios", on_delete=models.CASCADE)
