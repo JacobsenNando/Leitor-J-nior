@@ -32,6 +32,12 @@ source venv/bin/activate
 ```bash
 pip install django
 ```
+## Criação de Databases
+
+ execute o seguinte comando para criar a database:
+ ```bash
+create database leitor_junior
+```
 
 ## Migração do Banco de Dados
 
@@ -40,7 +46,9 @@ Execute o seguinte comando para criar as tabelas no banco de dados:
 ```bash
 python manage.py migrate
 ```
+## Popular as Tabelas
 
+Execute os comandos encontrados no arquivo [popular bd.sql](https://github.com/JacobsenNando/PIA3/blob/main/popular%20bd.sql)
 ## Criação de um Superusuário
 
 Para criar um usuário administrativo no Django, execute o seguinte comando e siga as instruções:
