@@ -6,7 +6,7 @@
   margin-top: 1rem;
 }
 .form {
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(255, 240, 207);
   width: 24rem;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -28,6 +28,7 @@
   padding: 0.7em;
   transition: 0.4s ease-in-out;
   width: 22rem;
+  background-color: rgb(255, 240, 207);
 }
 
 .input:hover {
@@ -35,7 +36,7 @@
 }
 
 .input:focus {
-  background: #ffffff;
+  background: none;
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -84,7 +85,7 @@
   border: 1px solid rgb(175, 175, 175);
   outline: none;
   padding: 0.7em;
-  background-color: white;
+  background-color: rgb(255, 240, 207);
   margin-top: 2rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
 }
@@ -98,7 +99,7 @@
 }
 
 .table th {
-  background-color: #f2f2f2;
+  background-color: rgb(255, 240, 207);
 }
 
 .pagination {
