@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.urls import reverse
-from .models import Livros, Resenhas, Avaliacoes
+from .models import Livros, Resenhas
 from usuarios.models import Usuario
 import re
 from urllib.parse import urlparse
@@ -41,7 +41,9 @@ def search(request):
 def ver_livro(request, id):
     if request.session.get("usuario"):
         livro = Livros.objects.get(id=id)
-        return render(request, "ver_livro.html", {"livro": livro})
+        resenha = Resenhas.objects.filter(livro_fk_id = id)
+
+        return render(request, "ver_livro.html", {"livro": livro, "resenhas": resenha})
     
 
 def publica_resenha(request):
@@ -51,7 +53,6 @@ def publica_resenha(request):
         avaliacao = request.POST.get("rate")
 
         resenha_bd= Resenhas.objects.filter(usuario_fk = request.session.get("usuario")).filter(livro_fk = id_livro)
-        avaliacao_bd= Avaliacoes.objects.filter(usuario_fk = request.session.get("usuario")).filter(livro_fk = id_livro)
 
         usuario = Usuario.objects.get(id=request.session.get("usuario"))
         livro = Livros.objects.get(id=id_livro)
@@ -65,12 +66,9 @@ def publica_resenha(request):
             try:
                 resenha_bd = Resenhas(resenha = resenha,
                             livro_fk_id = livro.id,
-                            usuario_fk = usuario)
+                            usuario_fk = usuario,
+                            nota = avaliacao)
                 resenha_bd.save()
-                avaliacao_bd = Avaliacoes(nota = avaliacao,
-                            livro_fk_id = livro.id,
-                            usuario_fk = usuario)
-                avaliacao_bd.save()
                 return redirect(f'/livro/ver_livro/{id_livro}?status=0')
             except Exception as erro:
                 print("erro:", erro)

@@ -16,21 +16,11 @@ class Resenhas(models.Model):
     resenha = models.TextField()
     livro_fk = models.ForeignKey(Livros, on_delete=models.CASCADE)
     usuario_fk = models.ForeignKey("usuarios.Usuario", on_delete=models.CASCADE)
+    nota = models.IntegerField()
     data = models.DateTimeField(auto_now_add=True)
      
     class Meta:
         verbose_name = "resenha"
 
     def __str__(self):
-        return self.titulo
-
-class Avaliacoes(models.Model):
-     livro_fk = models.ForeignKey(Livros, on_delete=models.CASCADE)
-     nota = models.IntegerField()
-     usuario_fk = models.ForeignKey("usuarios.Usuario", on_delete=models.CASCADE)
-     
-     class Meta:
-        verbose_name = "avaliacao"
-
-     def __str__(self):
-        return self.titulo
+        return self.resenha
