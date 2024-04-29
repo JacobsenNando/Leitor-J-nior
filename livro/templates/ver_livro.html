@@ -117,11 +117,12 @@
             {% for resenha in resenhas %}
             <tr>
               <td>{{resenha.resenha}}</td>
-              <td>{% for i in 1|range:resenha.nota %}
-                <i class="fas fa-star"></i> <!-- Ícone de estrela preenchida -->
-            {% endfor %}
-            {% for i in resenha.nota|add:1|range:6 %}
-                <i class="far fa-star"></i> <!-- Ícone de estrela vazia -->
+              <td> {% for i in "12345"|make_list %}
+                {% if i|add:0 <= resenha.nota %}
+                    <span class="star filled">★</span> <!-- estrela preenchida -->
+                {% else %}
+                    <span class="star">☆</span> <!-- estrela vazia -->
+                {% endif %}
             {% endfor %}</td>
             </tr>
             {% endfor %}
