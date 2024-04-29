@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 83vh;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+  border: 2px solid rgb(105, 105, 105);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: rgb(255, 240, 207);
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+text-decoration: underline;
+}
+.subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}

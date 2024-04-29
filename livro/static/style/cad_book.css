@@ -69,12 +69,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(255, 240, 207);
   padding: 1rem;
   border-radius: 0.5rem;
   transition: 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
-  background-color: rgb(255, 255, 255);
 }
 .input {
   border-radius: 0.5rem;
@@ -91,7 +90,7 @@
 }
 
 .input:focus {
-  background: #ffffff;
+  background: rgb(255, 240, 207);
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .preview {
@@ -108,7 +107,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(255, 240, 207);
   padding: 1rem;
   border-radius: 0.5rem;
   transition: 0.4s ease-in-out;
@@ -126,7 +125,7 @@
   border: 1px solid rgb(175, 175, 175);
   outline: none;
   padding: 0.7em;
-  background-color: white;
+  background-color: rgb(255, 240, 207);
   margin-top: 1rem;
   box-shadow: rgba(0, 0, 0, 0.4) 0.5rem 0.8rem 0.8rem;
   max-height: 85%;
@@ -142,7 +141,7 @@
 }
 
 .table th {
-  background-color: #f2f2f2;
+  background-color: rgb(255, 240, 207);
 }
 
 .pagination {
@@ -152,4 +151,35 @@
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
+}
+
+.bin-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  background-color: rgb(255, 95, 95);
+  cursor: pointer;
+  border: 3px solid rgb(255, 201, 201);
+  transition-duration: 0.3s;
+}
+.bin-bottom {
+  width: 15px;
+}
+.bin-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+}
+.bin-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+.bin-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+.bin-button:active {
+  transform: scale(0.9);
 }

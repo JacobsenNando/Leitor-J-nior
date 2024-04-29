@@ -1,0 +1,7 @@
+1. Ir no mysql e dar os seguintes comandos:
+    -use database leitor_junior
+    -drop database leitor_junior
+    -create database leitor_junior
+2. Ir até o projeto, abrir a venv e digitar os seguintes comandos:
+    -python manage.py migrate
+3. Ir novamente até o mysql e popular as tabelas com os dados de "populr bd" o arquivo atualizado está junto ao diretório raiz

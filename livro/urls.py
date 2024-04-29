@@ -7,6 +7,7 @@ urlpatterns = [
     path("search/", views.search, name="search"),
     path("ver_livro/<int:id>", views.ver_livro, name="ver_livro"),
     path("sobre/", views.sobre, name="sobre"),
+    path("publica_resenha", views.publica_resenha, name="publica_resenha"),
     
     #urls área administrativa
     path("cadastrar_livro/", views.cadastrar_livro, name='cadastrar_livro'),

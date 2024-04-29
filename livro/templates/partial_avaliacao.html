@@ -1,0 +1,58 @@
+<table>
+    <thead>
+        <tr>
+            <th style="display: none;": none;>Id</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Gênero</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for livro in livros %}
+        <tr>
+            <td style="display: none;">{{ livro.id }}</td>
+            <td>{{ livro.titulo }}</td>
+            <td>{{ livro.autor }}</td>
+            <td>{{ livro.genero }}</td>
+            <td><button class="editButton">editar</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="pagination" class="pagination">
+    {% if livros.has_previous %}
+        {% if request.GET.search %}
+            <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.previous_page_number }}">Anterior</a>
+        {% else %}
+            <a href="?page={{ livros.previous_page_number }}">Anterior</a>
+        {% endif %}
+    {% endif %}
+    
+    {% if request.GET.search %}
+        {% for num in livros.paginator.page_range %}
+            <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ num }}">{{ num }}</a>
+        {% endfor %}
+    {% endif %}
+    
+    {% if livros.has_next %}
+        {% if request.GET.search %}
+            <a href="?search={{ request.GET.search }}&filtro={{ request.GET.filtro }}&page={{ livros.next_page_number }}">Próxima</a>
+        {% else %}
+            <a href="?page={{ livros.next_page_number }}">Próxima</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+<table class="">
+    <tr>
+      <th>Resenha</th>
+      <th>Nota</th>
+    </tr>
+    {% for resenha in resenhas %}
+    <tr>
+      <td>{{resenha.resenha}}</td>
+      <td>{{resenha.nota}}</td>
+    </tr>
+    {% endfor %}
+  </table>
