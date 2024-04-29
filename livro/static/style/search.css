@@ -30,11 +30,11 @@
 }
 .input {
   border-radius: 0.5rem;
-  border: 1px solid rgb(74, 74, 74);
+  border: 1px solid rgb(175, 175, 175);
   padding: 0.7em;
   transition: 0.4s ease-in-out;
   width: 30rem;
-  background-color: rgb(255, 240, 207);
+  background-color: rgb(253, 248, 236);
 }
 
 .input:hover {
@@ -42,11 +42,11 @@
 }
 
 .input:focus {
-  background: rgb(255, 240, 207);
+  background: rgb(253, 248, 236);
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .button {
-  background:rgb(255, 240, 207);
+  background:rgb(253, 248, 236);
   border: 1px solid rgb(175, 175, 175);
   padding: 10px 10px;
   border-radius: 0.5rem;
@@ -65,7 +65,7 @@
   color: #000000;
 }
 .filtro {
-  background: none;
+  background: rgb(253, 248, 236);
   border: 1px solid rgb(175, 175, 175);
   padding: 5px;
   border-radius: 0.5rem;
@@ -79,6 +79,6 @@
 }
 
 .filtro:focus {
-  background: #ffffff;
+  background: rgb(253, 248, 236);
   box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
 }
