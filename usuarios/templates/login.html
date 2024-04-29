@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     {% load static %}
-    
+    <title>Entrar</title>
+
+ <link rel="shortcut icon" type="svg" href="{% static 'images/icon.svg'%}"/> 
  <link rel="stylesheet" href="{% static 'style/cad_log_layout.css' %}" />
  <link rel="stylesheet" href="{% static 'style/reset.css' %}" />
 
@@ -28,6 +30,7 @@
       >
         {% csrf_token %}
         <p class="heading">Bem Vindo de Volta!</p>
+        <br>
         <div class="form-control">
           <input
             class="input"
