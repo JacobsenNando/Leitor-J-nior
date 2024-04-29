@@ -67,6 +67,3 @@ Para executar o serviço localmente:
 ```bash
 python manage.py runserver
 ```
-```
-
-Este README.md fornece instruções básicas para configurar um ambiente de desenvolvimento Django e iniciar o projeto Leitor Júnior.
