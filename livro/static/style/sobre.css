@@ -7,7 +7,6 @@
 }
 .content {
   display: flex;
-  justify-content: left;
   align-items: center;
   flex-direction: column;
   border: 2px solid rgb(105, 105, 105);
@@ -17,13 +16,21 @@
   background-color: rgb(255, 240, 207);
 }
 .title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-text-decoration: underline;
+  text-decoration: underline;
+  font-size: larger;
 }
 .subtitle {
-  font-size: 1rem;
-  font-weight: bold;
-    margin-bottom: 0.5rem;
+  font-size: large;
+
+}
+p {
+  margin-bottom: 20px;
+}
+ul {
+  margin-bottom: 20px;
+  list-style-type: none;
+  padding-left: 0;
+}
+li {
+  margin-bottom: 5px;
 }
