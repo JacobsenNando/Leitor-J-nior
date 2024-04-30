@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseForbidden
 from django.urls import reverse
 from .models import Livros, Resenhas
 from usuarios.models import Usuario
 import re
-from urllib.parse import urlparse
 
 
 def home(request):
