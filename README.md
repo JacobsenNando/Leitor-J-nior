@@ -5,9 +5,10 @@ Bem-vindo ao Leitor Júnior, um portal desenvolvido para inserir resumos e notas
 
 ## Guia de Configuração
 
-Este é um guia básico para configurar e iniciar o projeto Leitor Júnior com Django.
+Este é um guia básico para configurar e iniciar o projeto Leitor Júnior com Django no VSCode.
 
 ## Configuração do Ambiente Virtual
+- No diretório raiz do projeto
 
 ```bash
 python -m venv venv
@@ -15,7 +16,13 @@ python -m venv venv
 
 ## Ativar o Ambiente Virtual
 
-- No Windows:
+- No Windows (PowerShell):
+
+```PowerShell
+./venv/Scripts/activate.ps1
+```
+
+- No Windows (bash):
 
 ```bash
 ./venv/Scripts/activate.ps1
@@ -27,16 +34,30 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-## Instalação de requerimentos
+## Instalação de dependências
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
-## Criação de Databases
+## Integração com o banco de dados
 
- Em seu servidor MySQL, execute o seguinte comando para criar a database:
+Há duas possibilidades para integração com banco de dados por padrão neste projeto, a primeira e mais simples é o dbSqlite3 e a segunda o MySQL Workbench
+## MySQL
+
+Em seu servidor MySQL, execute o seguinte comando para criar o database:
  ```bash
 create database leitor_junior
+```
+Em seguida, crie um usuário o qual o ORM do Django irá utilizar para acessar o database 
+### Dica: 
+- Lembre-se de substituir 'novo_usuario' e 'senha' de acordo com o seu projeto, podem ser valores arbitrários, mas devem coincidir com os dados passados para Settings.py DATABASES.
+- Se o banco de dados estiver na mesma máquina do servidor Django, pode ser mantido localhost, caso contrário, altere conforme sua necessidade, lembrando de revisar os parametros em Settings.py DATABASES
+ ```mysql
+CREATE USER 'novo_usuário'@'localhost' IDENTIFIED BY 'senha'; 
+```
+Em seguida, crie as permissões para o usuário:
+ ```mysql
+GRANT ALL PRIVILEGES ON * . * TO 'novo_usuario'@'localhost';
 ```
 
 ## Migração do Banco de Dados
