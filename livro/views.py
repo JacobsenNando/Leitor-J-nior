@@ -21,7 +21,7 @@ def search(request):
         filtro = request.GET.get("filtro")
         
         # Verifica se a busca é válida
-        re_busca = r"^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$"
+        re_busca = r"^[a-zA-Z0-9áéíóúÁÉÍÓÚâêîôûÂÊÎÔÛãõÃÕçÇ][a-zA-Z0-9áéíóúÁÉÍÓÚâêîôûÂÊÎÔÛãõÃÕçÇ\s]*[a-zA-Z0-9áéíóúÁÉÍÓÚâêîôûÂÊÎÔÛãõÃÕçÇ]$"
 
         if not re.match(re_busca, busca.strip()):
             return HttpResponseForbidden()
