@@ -1,5 +1,5 @@
 
-## Leitor Júnior - Portal de Resumos e Notas para Livros
+# Leitor Júnior - Portal de Resumos e Notas para Livros
 
 Bem-vindo ao Leitor Júnior, um portal desenvolvido para inserir resumos e notas para livros, projetado para ser utilizado em escolas.
 
@@ -39,9 +39,12 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-## Integração com o banco de dados
+# Integração com o banco de dados
 
-Há duas possibilidades para integração com banco de dados por padrão neste projeto, a primeira e mais simples é o dbSqlite3 e a segunda o MySQL Workbench
+Há duas possibilidades para integração com banco de dados por padrão neste projeto, a primeira e mais simples é o dbSqlite3 e a segunda o MySQL Workbench.
+## dbSqlite3
+- Caso opte por usa o dbSqlite3, apenas pule para o passo de "Migraçao do Banco de Dados", apenas lembre-se de conferir Settings.py DATABASES para configurar o dbSqlite3 ao invés do MySQL.
+
 ## MySQL
 
 Em seu servidor MySQL, execute o seguinte comando para criar o database:
@@ -62,7 +65,7 @@ GRANT ALL PRIVILEGES ON * . * TO 'novo_usuario'@'localhost';
 
 ## Migração do Banco de Dados
 
-Execute o seguinte comando para criar as tabelas no banco de dados:
+Após a criação do banco de dados, no VSCode, execute o seguinte comando para criar as tabelas no banco de dados:
 
 ```bash
 python manage.py migrate
@@ -70,7 +73,8 @@ python manage.py migrate
 ## Popular as Tabelas
 
 Execute os comandos encontrados no arquivo [popular bd.sql](https://github.com/JacobsenNando/PIA3/blob/main/popular%20bd.sql)
-
+- O arquivo contendo os comandos SQL foi gerado de uma adaptaçao de um dataset público, para que atendesse as necessidade do projeto. O dataset orignial está disponível em: https://www.kaggle.com/datasets/diegomariano/tabela-de-livros?resource=download
+- Foram ustilizados alguns dados desse dataset e inserido outros de forma arbitrária conforme a necessidade do projeto para realização dos testes.
 ## Criação de um Superusuário
 
 Para criar um usuário administrativo no Django, execute o seguinte comando e siga as instruções:
@@ -88,3 +92,5 @@ Para executar o serviço localmente:
 ```bash
 python manage.py runserver
 ```
+## Finalização
+-A está altura o servidor deve estar configurado corretamente pra funcionar de forma local no VSCode, caso encontre alguma dificuldade não deixa de entrar em contato
