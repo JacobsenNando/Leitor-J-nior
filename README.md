@@ -93,4 +93,4 @@ Para executar o serviço localmente:
 python manage.py runserver
 ```
 ## Finalização
--A está altura o servidor deve estar configurado corretamente pra funcionar de forma local no VSCode, caso encontre alguma dificuldade não deixa de entrar em contato
+- Neste ponto, o servidor deve estar configurado corretamente pra funcionar de forma local no VSCode, caso encontre alguma dificuldade não deixa de entrar em contato
