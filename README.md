@@ -74,7 +74,7 @@ python manage.py migrate
 
 Execute os comandos encontrados no arquivo [popular bd.sql](https://github.com/JacobsenNando/PIA3/blob/main/popular%20bd.sql)
 - O arquivo contendo os comandos SQL foi gerado de uma adaptaçao de um dataset público, para que atendesse as necessidade do projeto. O dataset orignial está disponível em: https://www.kaggle.com/datasets/diegomariano/tabela-de-livros?resource=download
-- Foram ustilizados alguns dados desse dataset e inserido outros de forma arbitrária conforme a necessidade do projeto para realização dos testes.
+- Foram utilizados alguns dados desse dataset e inserido outros de forma arbitrária conforme a necessidade do projeto para realização dos testes.
 ## Criação de um Superusuário
 
 Para criar um usuário administrativo no Django, execute o seguinte comando e siga as instruções:
